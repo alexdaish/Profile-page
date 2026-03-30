@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Daish — Venture Design Lead</title>
+  <meta name="description" content="Alex Daish builds startups from scratch at Founders Factory. Venture portfolio, career history, and proof that imagination is a professional skill.">
+  <meta property="og:title" content="Alex Daish — Venture Design Lead">
+  <meta property="og:description" content="I like to use my imagination to solve problems in exchange for money.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A0A14;
+      --bg-warm: #F0F2F8;
+      --bg-card: #10101E;
+      --text-light: #F0F0F5;
+      --text-dark: #0A0A14;
+      --text-muted-dark: #7A7E96;
+      --text-muted-light: #6B6F82;
+      --accent: #0000FF;
+      --accent-dim: rgba(0, 0, 255, 0.12);
+      --orange: #FF6B2B;
+      --rule-dark: rgba(240, 240, 245, 0.1);
+      --rule-light: rgba(10, 10, 20, 0.1);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Outfit', -apple-system, sans-serif;
+      --mono: 'Space Mono', 'Courier New', monospace;
+      --max-w: 1200px;
+      --section-pad: clamp(100px, 14vw, 180px);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    ::selection {
+      background: var(--orange);
+      color: white;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-light);
+      background: var(--bg-dark);
+      overflow-x: hidden;
+    }
+
+    /* ============ GRAIN OVERLAY ============ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ============ SCROLLBAR ============ */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 255, 0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+    /* ============ NAV ============ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(12, 11, 9, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transform: translateY(-100%);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+    }
+
+    .nav.visible {
+      transform: translateY(0);
+      border-bottom-color: var(--rule-dark);
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--text-light);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted-dark);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 40px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(72px, 13vw, 160px);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--text-light);
+      margin-bottom: 48px;
+    }
+
+    .hero-name .first { display: block; }
+    .hero-name .last {
+      display: block;
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-style: italic;
+      line-height: 1.35;
+      max-width: 580px;
+      color: var(--text-muted-dark);
+      margin-bottom: 56px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 40px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-dark);
+    }
+
+    .hero-meta a {
+      color: var(--text-muted-dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .hero-meta a:hover { color: var(--orange); }
+
+    /* hero entrance */
+    .hero-label,
+    .hero-name .first,
+    .hero-name .last,
+    .hero-tagline,
+    .hero-meta {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .hero-label { animation-delay: 0.1s; }
+    .hero-name .first { animation-delay: 0.2s; display: block; }
+    .hero-name .last { animation-delay: 0.35s; display: block; }
+    .hero-tagline { animation-delay: 0.55s; }
+    .hero-meta { animation-delay: 0.75s; }
+
+    @keyframes hero-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============ MARQUEE ============ */
+    .marquee-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--rule-dark);
+      border-bottom: 1px solid var(--rule-dark);
+      padding: 20px 0;
+      background: var(--bg-dark);
+    }
+
+    .marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 40s linear infinite;
+    }
+
+    .marquee span {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--text-muted-dark);
+      white-space: nowrap;
+      padding: 0 24px;
+    }
+
+    .marquee span.sep {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ============ LOGO MARQUEE ============ */
+    .logo-marquee-wrap {
+      background: var(--bg-warm);
+      border-top: 1px solid var(--rule-light);
+      border-bottom: 1px solid var(--rule-light);
+      padding: 24px 0;
+      overflow: hidden;
+    }
+
+    .logo-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee-scroll 50s linear infinite;
+      gap: 48px;
+    }
+
+    .logo-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted-light);
+      white-space: nowrap;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .logo-item:hover {
+      opacity: 1;
+    }
+
+    .logo-item img {
+      height: 28px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+    }
+
+    /* ============ SECTIONS ============ */
+    section {
+      padding: var(--section-pad) 40px;
+    }
+
+    .section-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 800px;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .section-subtext {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-muted-dark);
+      max-width: 640px;
+      margin-bottom: 72px;
+    }
+
+    /* ============ INTRO ============ */
+    .intro {
+      background: var(--bg-dark);
+    }
+
+    .intro-text {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3.6vw, 42px);
+      line-height: 1.35;
+      max-width: 920px;
+    }
+
+    .intro-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+      margin-top: 88px;
+      padding-top: 64px;
+      border-top: 1px solid var(--rule-dark);
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      margin-bottom: 12px;
+      color: var(--orange);
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-dark);
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    /* ============ VENTURES ============ */
+    .ventures {
+      background: var(--bg-warm);
+      color: var(--text-dark);
+    }
+
+    .ventures .section-label { color: var(--accent); }
+    .ventures .section-heading { color: var(--text-dark); }
+    .ventures .section-subtext { color: var(--text-muted-light); }
+
+    .venture-list {
+      border-top: 1px solid var(--rule-light);
+    }
+
+    .venture-item {
+      display: grid;
+      grid-template-columns: 64px 1fr 280px;
+      gap: 0 40px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--rule-light);
+      align-items: start;
+      transition: background 0.3s;
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 8px;
+    }
+
+    .venture-item:hover {
+      background: rgba(0, 0, 255, 0.04);
+    }
+
+    .venture-num {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted-light);
+      padding-top: 8px;
+    }
+
+    .venture-main { }
+
+    .venture-name {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      transition: color 0.3s;
+    }
+
+    .venture-item:hover .venture-name {
+      color: var(--orange);
+    }
+
+    .venture-desc {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-muted-light);
+      max-width: 520px;
+    }
+
+    .venture-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+      padding-top: 8px;
+      text-align: right;
+    }
+
+    .venture-tags {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted-light);
+    }
+
+    .venture-outcome {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--orange);
+    }
+
+    .venture-outcome.dead {
+      color: var(--text-muted-light);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .venture-year {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted-light);
+    }
+
+    .venture-item.failed {
+      opacity: 0.7;
+    }
+
+    .venture-item.failed:hover {
+      opacity: 1;
+    }
+
+    /* ============ METHOD ============ */
+    .method {
+      background: var(--bg-warm);
+      color: var(--text-dark);
+      padding-top: 0;
+    }
+
+    .method .section-label { color: var(--accent); }
+    .method .section-heading { color: var(--text-dark); }
+    .method .section-subtext { color: var(--text-muted-light); }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 64px;
+    }
+
+    .method-step {
+      position: relative;
+    }
+
+    .method-step-number {
+      font-family: var(--serif);
+      font-size: 80px;
+      line-height: 1;
+      color: var(--rule-light);
+      margin-bottom: 20px;
+      transition: color 0.4s;
+    }
+
+    .method-step:hover .method-step-number {
+      color: var(--orange);
+    }
+
+    .method-step h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 14px;
+      color: var(--text-dark);
+    }
+
+    .method-step p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted-light);
+      line-height: 1.65;
+    }
+
+    /* ============ CAREER ============ */
+    .career {
+      background: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .timeline {
+      max-width: 900px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 56px;
+      padding: 56px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      align-items: start;
+    }
+
+    .timeline-item:first-child { padding-top: 0; }
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-period {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-dark);
+      padding-top: 6px;
+    }
+
+    .timeline-role {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--text-light);
+    }
+
+    .timeline-company {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .timeline-desc {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-muted-dark);
+      line-height: 1.65;
+    }
+
+    /* ============ ALSO TRUE ============ */
+    .also-true {
+      background: var(--bg-dark);
+      padding-top: 0;
+    }
+
+    .also-true .section-heading {
+      margin-bottom: 56px;
+    }
+
+    .also-list {
+      list-style: none;
+      max-width: 840px;
+    }
+
+    .also-list li {
+      font-family: var(--serif);
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-style: italic;
+      line-height: 1.5;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      color: var(--text-muted-dark);
+      transition: color 0.3s;
+    }
+
+    .also-list li:first-child {
+      border-top: 1px solid var(--rule-dark);
+    }
+
+    .also-list li:hover {
+      color: var(--text-light);
+    }
+
+    .also-list li strong {
+      color: var(--text-light);
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* ============ CONTACT ============ */
+    .contact {
+      background: var(--bg-warm);
+      color: var(--text-dark);
+      text-align: center;
+    }
+
+    .contact .section-heading {
+      color: var(--text-dark);
+      max-width: 100%;
+      margin: 0 auto 16px;
+    }
+
+    .contact-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-muted-light);
+      margin-bottom: 56px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 16px 32px;
+      border: 1px solid var(--rule-light);
+      border-radius: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-link:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .contact-link.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--orange);
+      color: white;
+      border-color: var(--orange);
+    }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--bg-warm);
+      text-align: center;
+      padding: 32px 40px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-light);
+      border-top: 1px solid var(--rule-light);
+    }
+
+    /* ============ ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.16s; }
+    .reveal-d3 { transition-delay: 0.24s; }
+    .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+    .reveal-d7 { transition-delay: 0.56s; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1000px) {
+      .venture-item {
+        grid-template-columns: 48px 1fr;
+        gap: 0 24px;
+      }
+      .venture-meta {
+        grid-column: 2;
+        align-items: flex-start;
+        text-align: left;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        margin-top: 16px;
+      }
+      .method-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: var(--section-pad) 24px; }
+      .hero { padding: 0 24px 60px; }
+      .nav { padding: 16px 24px; }
+      .nav-links { gap: 24px; }
+
+      .intro-stats {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .venture-item {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 36px 20px;
+      }
+      .venture-num { display: none; }
+      .venture-meta {
+        grid-column: 1;
+        margin-top: 16px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 40px 0;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { margin-bottom: 36px; }
+      .hero-tagline { margin-bottom: 40px; }
+      section { padding: clamp(60px, 10vw, 100px) 20px; }
+      .nav-links a { font-size: 11px; }
+      footer { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="nav-name">Alex Daish</a>
+    <ul class="nav-links">
+      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="#career">Career</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="top">
+    <div class="hero-label">Venture Design Lead &mdash; London</div>
+    <h1 class="hero-name">
+      <span class="first">Alex</span>
+      <span class="last">Daish</span>
+    </h1>
+    <p class="hero-tagline">I like to use my imagination to solve problems in exchange for money.</p>
+    <div class="hero-meta">
+      <span>Founders Factory</span>
+      <span>Est. 2017</span>
+      <a href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <!-- Marquee -->
+  <div class="marquee-wrap">
+    <div class="marquee" aria-hidden="true">
+      <span>Venture Design</span><span class="sep">/</span>
+      <span>Startup Building</span><span class="sep">/</span>
+      <span>Problem Finding</span><span class="sep">/</span>
+      <span>Imagination for Hire</span><span class="sep">/</span>
+      <span>Concept to Company</span><span class="sep">/</span>
+      <span>Zero to Funded</span><span class="sep">/</span>
+      <span>Venture Design</span><span class="sep">/</span>
+      <span>Startup Building</span><span class="sep">/</span>
+      <span>Problem Finding</span><span class="sep">/</span>
+      <span>Imagination for Hire</span><span class="sep">/</span>
+      <span>Concept to Company</span><span class="sep">/</span>
+      <span>Zero to Funded</span><span class="sep">/</span>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="section-inner">
+      <div class="section-label reveal">The short version</div>
+      <p class="intro-text reveal reveal-d1">
+        I build startups from scratch inside <em>Founders Factory</em>, one of Europe's leading venture studios. Over eight years I've generated dozens of venture concepts, validated them through real-world experiments, and helped launch companies that went on to raise external venture capital. Some are still growing. A few didn't work. One involved cats.
+      </p>
+      <div class="intro-stats">
+        <div class="reveal reveal-d1">
+          <div class="stat-number" data-count="39">0</div>
+          <div class="stat-label">Ventures greenlit<br>2018 &ndash; 2026</div>
+        </div>
+        <div class="reveal reveal-d2">
+          <div class="stat-number" data-count="400" data-prefix="~" data-suffix="+">0</div>
+          <div class="stat-label">Concepts explored<br>(est.)</div>
+        </div>
+        <div class="reveal reveal-d3">
+          <div class="stat-number" data-count="64" data-prefix="&pound;" data-suffix="M+">£0</div>
+          <div class="stat-label">External capital<br>raised</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ventures -->
+  <section class="ventures" id="ventures">
+    <div class="section-inner">
+      <div class="section-label reveal">Selected ventures</div>
+      <h2 class="section-heading reveal reveal-d1">Things I helped <em>exist.</em></h2>
+      <p class="section-subtext reveal reveal-d2">
+        Each of these started as a blank page. My job was to find the problem, validate that someone would pay to solve it, design the product, and build enough to prove it could work.
+      </p>
+
+      <div class="venture-list">
+        <article class="venture-item reveal">
+          <div class="venture-num">01</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Malcolm</h3>
+            <p class="venture-desc">A protocol layer connecting AI agents to legacy insurance systems. Three pathways: A2A translation for mainframes, embedded generative UI checkout with FCA compliance, and headless APIs for agent-first quoting. Built with Aviva.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Insurtech &middot; AI Infrastructure</span>
+            <span class="venture-outcome">In build</span>
+            <span class="venture-year">2025</span>
+          </div>
+        </article>
+
+        <a href="https://www.byway.travel" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">02</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Byway</h3>
+            <p class="venture-desc">The world's first flight-free holiday platform. A dynamic trip builder that lets travellers create personalised overland holidays across the UK and Europe &mdash; ABTA-protected, no flying required. Series A oversubscribed.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Travel Tech &middot; Sustainable Tourism</span>
+            <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; &pound;5M</span></span>
+            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2024/07/09/byway-is-using-ai-to-help-travellers-slow-down-and-take-the-scenic-route/', '_blank');">TechCrunch &nearr;</span></span>
+          </div>
+        </a>
+
+        <a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">03</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Temple</h3>
+            <p class="venture-desc">Token-gated membership platform for artists. NFT and social token-based memberships with exclusive perks. Pivoted toward fan microsites and data capture for independent musicians.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Creator Economy &middot; Music Tech</span>
+            <span class="venture-outcome"><span class="venture-link-label">Acquired by Groover, 2025</span></span>
+            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://musically.com/2025/09/18/groover-acquires-startup-temple-and-launches-new-d2f-tools/', '_blank');">Music Ally &nearr;</span></span>
+          </div>
+        </a>
+
+        <a href="https://www.usehammock.com" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">04</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Hammock</h3>
+            <p class="venture-desc">Open banking-connected platform for landlords. Automatically monitors rent collection, reconciles transactions, and produces draft property tax statements. Launched the first FCA-regulated current account for landlords.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Fintech &middot; PropTech</span>
+            <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; $5.5M</span></span>
+            <span class="venture-year">2019 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2020/08/17/hammock/', '_blank');">TechCrunch &nearr;</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section class="method">
+    <div class="section-inner">
+      <div class="section-label reveal">How I work</div>
+      <h2 class="section-heading reveal reveal-d1">Find the problem.<br>Prove it matters.<br>Build the thing.</h2>
+      <p class="section-subtext reveal reveal-d2">
+        Venture design is not ideation. It's a structured way of killing bad ideas quickly and giving good ones the evidence they need to survive.
+      </p>
+
+      <div class="method-grid">
+        <div class="method-step reveal">
+          <div class="method-step-number">01</div>
+          <h3>Find a problem worth solving</h3>
+          <p>Start with a market, not a solution. Interview real people. Map where money is being wasted, time is being lost, or pain is being tolerated. The opportunity lives in the gap between what exists and what should.</p>
+        </div>
+        <div class="method-step reveal reveal-d1">
+          <div class="method-step-number">02</div>
+          <h3>Validate before you build</h3>
+          <p>Design experiments that test the riskiest assumptions first. Landing pages, concierge MVPs, fake doors, Wizard-of-Oz prototypes. Spend days, not months, learning whether anyone actually wants this.</p>
+        </div>
+        <div class="method-step reveal reveal-d2">
+          <div class="method-step-number">03</div>
+          <h3>Build the first version</h3>
+          <p>Design and ship something real. Not a pitch deck &mdash; a product. Enough to get paying users or enough evidence to raise a round. Then hand it to a founding team who can take it further than I can.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Marquee -->
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee" aria-hidden="true">
+      <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
+      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars"></span>
+      <span class="logo-item"><img src="logos/google.svg" alt="Google"></span>
+      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce"></span>
+      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva"></span>
+      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group"></span>
+      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal"></span>
+      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt"></span>
+      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta"></span>
+      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet"></span>
+      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck"></span>
+      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
+      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
+      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
+      <span class="logo-item"><img src="logos/lego.svg" alt="LEGO"></span>
+      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
+      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
+      <span class="logo-item"><img src="logos/csc.svg" alt="CSC"></span>
+      <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
+      <!-- duplicate for seamless loop -->
+      <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
+      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars"></span>
+      <span class="logo-item"><img src="logos/google.svg" alt="Google"></span>
+      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce"></span>
+      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva"></span>
+      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group"></span>
+      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal"></span>
+      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt"></span>
+      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta"></span>
+      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet"></span>
+      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck"></span>
+      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
+      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
+      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
+      <span class="logo-item"><img src="logos/lego.svg" alt="LEGO"></span>
+      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
+      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
+      <span class="logo-item"><img src="logos/csc.svg" alt="CSC"></span>
+      <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
+    </div>
+  </div>
+
+  <!-- Career -->
+  <section class="career" id="career">
+    <div class="section-inner">
+      <div class="section-label reveal">Career</div>
+      <h2 class="section-heading reveal reveal-d1">Where I've <em>done this.</em></h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-period">2017 &mdash; Present</div>
+          <div>
+            <h3 class="timeline-role">Venture Design Lead</h3>
+            <div class="timeline-company">Founders Factory, London</div>
+            <p class="timeline-desc">Lead the design and validation of new ventures across sectors including health, climate, education, fintech, and consumer. Work with corporate partners to identify venture opportunities at the intersection of corporate assets and unmet market needs. Responsible for taking concepts from blank page to funded startup.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-period">2014 &mdash; 2017</div>
+          <div>
+            <h3 class="timeline-role">Strategist &amp; Designer</h3>
+            <div class="timeline-company">AKQA, London</div>
+            <p class="timeline-desc">Strategy, UX, and creative work for brands including Nike, Rolls-Royce, and Google. Learned how large organisations think about product, experience, and innovation &mdash; then went somewhere smaller to actually do it.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-period">2011 &mdash; 2014</div>
+          <div>
+            <h3 class="timeline-role">Getting Started</h3>
+            <div class="timeline-company">Various, London</div>
+            <p class="timeline-desc">Design and strategy roles across agencies and in-house teams. Figured out what I was good at. Figured out what I wasn't. Both were useful.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Also True -->
+  <section class="also-true">
+    <div class="section-inner">
+      <div class="section-label reveal">Also true</div>
+      <h2 class="section-heading reveal reveal-d1">Things that don't fit<br>on a <em>LinkedIn profile.</em></h2>
+
+      <ul class="also-list">
+        <li class="reveal">
+          Once helped <strong>crowdfund replacing every advert in a London tube station with pictures of cats.</strong> It was called Citizens Advertising Takeover Service. It raised &pound;23,000 in two weeks. It was exactly as delightful as it sounds.
+        </li>
+        <li class="reveal reveal-d1">
+          <strong>Retired dog illustrator.</strong> The dogs were not anatomically accurate. The retirement was mutual.
+        </li>
+        <li class="reveal reveal-d2">
+          Creator of several <strong>bad and/or unsuccessful memes.</strong> I maintain they were ahead of their time. No one agrees.
+        </li>
+        <li class="reveal reveal-d3">
+          Genuinely believes that <strong>imagination is the most undervalued professional skill</strong> and that the best ideas come from people who refuse to take the brief at face value.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-inner">
+      <div class="section-label reveal">Get in touch</div>
+      <h2 class="section-heading reveal reveal-d1">Let's <em>talk.</em></h2>
+      <p class="contact-sub reveal reveal-d2">
+        Building something and need someone who's done this before?<br>Or just want to argue about whether memes count as a creative discipline?
+      </p>
+      <div class="contact-links reveal reveal-d3">
+        <a href="mailto:hello@alexdaish.com" class="contact-link primary">hello@alexdaish.com</a>
+        <a href="https://linkedin.com/in/alexdaish" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/alexdaish" class="contact-link" target="_blank" rel="noopener">Twitter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Alex Daish &mdash; Built with taste and moderate effort.
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Nav show/hide on hero exit
+    const nav = document.getElementById('nav');
+    const hero = document.querySelector('.hero');
+
+    const navObserver = new IntersectionObserver(([entry]) => {
+      nav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+
+    navObserver.observe(hero);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Count-up animation for stats
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.count);
+          const prefix = el.dataset.prefix || '';
+          const suffix = el.dataset.suffix || '';
+          const duration = 2000;
+          const start = performance.now();
+
+          const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+          function tick(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutExpo(progress);
+            const current = Math.round(eased * target);
+            el.textContent = prefix + current.toLocaleString() + (progress < 1 ? '' : suffix);
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            }
+          }
+          requestAnimationFrame(tick);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    // Parallax fade on hero scroll
+    const heroContent = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const heroH = heroContent.offsetHeight;
+      if (scrolled < heroH) {
+        const progress = scrolled / heroH;
+        heroContent.style.opacity = 1 - progress * 1.2;
+        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
