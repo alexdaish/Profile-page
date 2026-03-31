@@ -146,7 +146,7 @@
       font-size: 12px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--orange);
       margin-bottom: 32px;
     }
 
@@ -249,9 +249,9 @@
 
     /* ============ LOGO MARQUEE ============ */
     .logo-marquee-wrap {
-      background: var(--bg-warm);
-      border-top: 1px solid var(--rule-light);
-      border-bottom: 1px solid var(--rule-light);
+      background: var(--bg-dark);
+      border-top: 1px solid var(--rule-dark);
+      border-bottom: 1px solid var(--rule-dark);
       padding: 24px 0;
       overflow: hidden;
     }
@@ -270,9 +270,9 @@
       font-family: var(--sans);
       font-size: 14px;
       font-weight: 400;
-      color: var(--text-muted-light);
+      color: var(--text-muted-dark);
       white-space: nowrap;
-      opacity: 0.6;
+      opacity: 0.45;
       transition: opacity 0.3s;
     }
 
@@ -285,6 +285,12 @@
       width: auto;
       max-width: 120px;
       object-fit: contain;
+      filter: brightness(0) invert(0.55);
+      transition: filter 0.3s;
+    }
+
+    .logo-item:hover img {
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(350deg);
     }
 
     /* ============ SECTIONS ============ */
@@ -302,7 +308,7 @@
       font-size: 12px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--orange);
       margin-bottom: 32px;
     }
 
@@ -316,7 +322,7 @@
 
     .section-heading em {
       font-style: italic;
-      color: var(--accent);
+      color: var(--orange);
     }
 
     .section-subtext {
@@ -342,7 +348,7 @@
 
     .intro-text em {
       font-style: italic;
-      color: var(--accent);
+      color: var(--orange);
     }
 
     .intro-stats {
@@ -569,7 +575,7 @@
       font-size: 13px;
       font-weight: 400;
       letter-spacing: 0.04em;
-      color: var(--accent);
+      color: var(--orange);
       margin-bottom: 20px;
     }
 
@@ -631,6 +637,12 @@
       color: var(--text-dark);
       max-width: 100%;
       margin: 0 auto 16px;
+    }
+
+    .contact .section-heading em,
+    .ventures .section-heading em,
+    .method .section-heading em {
+      color: var(--accent);
     }
 
     .contact-sub {
@@ -788,7 +800,7 @@
   <nav class="nav" id="nav">
     <a href="#top" class="nav-name">Alex Daish</a>
     <ul class="nav-links">
-      <li><a href="#ventures">Ventures</a></li>
+      <li><a href="ventures.html">Ventures</a></li>
       <li><a href="#career">Career</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -858,6 +870,7 @@
       <h2 class="section-heading reveal reveal-d1">Things I helped <em>exist.</em></h2>
       <p class="section-subtext reveal reveal-d2">
         Each of these started as a blank page. My job was to find the problem, validate that someone would pay to solve it, design the product, and build enough to prove it could work.
+        <br><br><a href="ventures.html" style="font-family: var(--mono); font-size: 13px; letter-spacing: 0.04em; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; transition: all 0.3s;" onmouseover="this.style.color='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'">View all 39 ventures &rarr;</a>
       </p>
 
       <div class="venture-list">

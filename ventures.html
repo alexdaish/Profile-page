@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venture Portfolio — Alex Daish</title>
+  <meta name="description" content="39 ventures built from scratch at Founders Factory. Full portfolio with funding data, partners, and status.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A0A14;
+      --bg-warm: #F0F2F8;
+      --bg-card: #12121E;
+      --text-light: #F0F0F5;
+      --text-dark: #0A0A14;
+      --text-muted: #7A7E96;
+      --accent: #0000FF;
+      --orange: #FF6B2B;
+      --rule: rgba(240, 240, 245, 0.08);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Outfit', -apple-system, sans-serif;
+      --mono: 'Space Mono', 'Courier New', monospace;
+      --max-w: 1200px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    ::selection { background: var(--orange); color: white; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-light);
+      background: var(--bg-dark);
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    a { color: inherit; }
+
+    /* ============ HEADER ============ */
+    .header {
+      padding: 40px 40px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover { color: var(--orange); }
+
+    .page-hero {
+      padding: 80px 40px 60px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ============ SUMMARY STATS ============ */
+    .summary {
+      display: flex;
+      gap: 48px;
+      padding: 0 40px 64px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .summary-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .summary-num {
+      font-family: var(--serif);
+      font-size: 36px;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .summary-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============ FILTERS ============ */
+    .filters {
+      padding: 0 40px 40px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ============ VENTURE GRID ============ */
+    .venture-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px 120px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+    }
+
+    .v-card {
+      background: var(--bg-dark);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.3s;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .v-card:hover {
+      background: var(--bg-card);
+    }
+
+    .v-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .v-card-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      flex-shrink: 0;
+      padding-top: 6px;
+    }
+
+    .v-card-name {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.1;
+      flex: 1;
+      transition: color 0.3s;
+    }
+
+    .v-card:hover .v-card-name {
+      color: var(--orange);
+    }
+
+    .v-card-arrow {
+      font-size: 18px;
+      color: var(--text-muted);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.3s;
+      flex-shrink: 0;
+      padding-top: 8px;
+    }
+
+    .v-card:hover .v-card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+      color: var(--orange);
+    }
+
+    .v-card-role {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .v-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .v-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      color: var(--text-muted);
+    }
+
+    .v-tag.partner {
+      border-color: rgba(255, 107, 43, 0.2);
+      color: rgba(255, 107, 43, 0.7);
+    }
+
+    .v-tag.year {
+      border-color: var(--rule);
+      color: var(--text-muted);
+    }
+
+    .v-tag.status {
+      border-color: rgba(255, 107, 43, 0.3);
+      color: var(--orange);
+    }
+
+    .v-tag.status.dead {
+      border-color: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.25);
+      text-decoration: line-through;
+    }
+
+    .v-tag.status.acquired {
+      border-color: rgba(0, 200, 120, 0.3);
+      color: rgba(0, 200, 120, 0.8);
+    }
+
+    .v-card-funding {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .v-card-notes {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      opacity: 0.7;
+    }
+
+    /* no-link cards */
+    .v-card.no-link {
+      cursor: default;
+    }
+
+    .v-card.no-link:hover .v-card-name {
+      color: var(--text-light);
+    }
+
+    /* ============ FOOTER ============ */
+    .page-footer {
+      text-align: center;
+      padding: 32px 40px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--rule);
+    }
+
+    .page-footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .page-hero, .header, .filters, .summary { padding-left: 24px; padding-right: 24px; }
+      .venture-grid {
+        padding: 0 24px 80px;
+        grid-template-columns: 1fr;
+      }
+      .v-card { padding: 28px 24px; }
+      .summary { gap: 32px; }
+      .page-footer { padding: 24px; }
+    }
+
+    /* ============ ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-link">&larr; Alex Daish</a>
+  </div>
+
+  <div class="page-hero">
+    <h1 class="reveal">Venture <em>Portfolio</em></h1>
+    <p class="reveal">39 ventures built from scratch at Founders Factory across 8 years, 19 corporate partners, and more bad ideas killed than I can count.</p>
+  </div>
+
+  <div class="summary">
+    <div class="summary-stat reveal">
+      <span class="summary-num">39</span>
+      <span class="summary-label">Ventures greenlit</span>
+    </div>
+    <div class="summary-stat reveal">
+      <span class="summary-num">12</span>
+      <span class="summary-label">Confirmed funding</span>
+    </div>
+    <div class="summary-stat reveal">
+      <span class="summary-num">24</span>
+      <span class="summary-label">Still active</span>
+    </div>
+    <div class="summary-stat reveal">
+      <span class="summary-num">&pound;55.8M</span>
+      <span class="summary-label">Follow-on raised</span>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="active">Active</button>
+    <button class="filter-btn" data-filter="funded">Funded</button>
+    <button class="filter-btn" data-filter="dead">Dead</button>
+    <button class="filter-btn" data-filter="acquired">Acquired</button>
+  </div>
+
+  <div class="venture-grid" id="ventureGrid">
+
+    <a href="https://trymalcolm.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">01</span>
+        <span class="v-card-name">Malcolm</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2025</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://meetwarren.co.uk" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">02</span>
+        <span class="v-card-name">Warren</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2025</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://www.mamainsurance.it/" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">03</span>
+        <span class="v-card-name">Mama Insurance</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Fastweb</span>
+        <span class="v-tag year">2025</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://risparmier.ai/" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">04</span>
+        <span class="v-card-name">Risparmier.ai</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Fastweb</span>
+        <span class="v-tag year">2025</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://quote.promptedby.ai" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">05</span>
+        <span class="v-card-name">Prompted</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2025</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://mietmagie.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">06</span>
+        <span class="v-card-name">MietMagie</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Vonovia</span>
+        <span class="v-tag year">2024</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://konduitcapacity.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">07</span>
+        <span class="v-card-name">Konduit</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2024</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://getjointly.ai" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">08</span>
+        <span class="v-card-name">Jointly</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2024</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://joincovent.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">09</span>
+        <span class="v-card-name">Covent / Pico</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Pico</span>
+        <span class="v-tag year">2023</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://kayna.io" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">10</span>
+        <span class="v-card-name">BuiltAI / Kayna</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-funding">&pound;2.3M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://martee.ai" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">11</span>
+        <span class="v-card-name">Martee AI</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-funding">&pound;738K raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Nesta</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://bondio.co" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">12</span>
+        <span class="v-card-name">Bondio</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-funding">&pound;1.3M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Deutsche Telekom</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://bundant.co" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">13</span>
+        <span class="v-card-name">Bundant</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Reckitt</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://carno.io" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">14</span>
+        <span class="v-card-name">Carno</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://satori.health/" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">15</span>
+        <span class="v-card-name">Satori</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Research</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Woven Science</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://mealia.co.uk" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">16</span>
+        <span class="v-card-name">Mealia</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Nesta</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://renbee.co.uk" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">17</span>
+        <span class="v-card-name">Renbee</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Nesta</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://focusanalytics.co/" target="_blank" rel="noopener" class="v-card reveal" data-status="unknown" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">18</span>
+        <span class="v-card-name">Focus Analytics</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Reckitt</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Unknown</span>
+      </div>
+    </a>
+
+    <a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="v-card reveal" data-status="acquired" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">19</span>
+        <span class="v-card-name">Temple</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-funding">&pound;2M raised &middot; Acquired by Groover 2025</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">AB InBev</span>
+        <span class="v-tag year">2021</span>
+        <span class="v-tag status acquired">Acquired</span>
+      </div>
+    </a>
+
+    <a href="https://badinfluence.com/" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">20</span>
+        <span class="v-card-name">Bad Influence / Otherly</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Research</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">L'Or&eacute;al</span>
+        <span class="v-tag year">2021</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://fabricfintech.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">21</span>
+        <span class="v-card-name">Fabric</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2021</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <div class="v-card no-link reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">22</span>
+        <span class="v-card-name">Kayna</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2021</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </div>
+
+    <a href="https://tembomoney.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">23</span>
+        <span class="v-card-name">Tembo</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-funding">&pound;37.5M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://byway.travel" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">24</span>
+        <span class="v-card-name">Byway</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-funding">&pound;6.2M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Guardian Media Group</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://jurnee.io" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">25</span>
+        <span class="v-card-name">Jurnee</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Business Design / Product Design</div>
+      <div class="v-card-funding">&pound;1.4M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">easyJet</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://wondersoflearning.co" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">26</span>
+        <span class="v-card-name">Wonders of Math</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Holtzbrinck</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://www.helio.cloud/" target="_blank" rel="noopener" class="v-card reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">27</span>
+        <span class="v-card-name">Helio</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Guardian Media Group</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </a>
+
+    <a href="https://www.getcamvas.com/" target="_blank" rel="noopener" class="v-card reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">28</span>
+        <span class="v-card-name">Camvas</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Guardian Media Group</span>
+        <span class="v-tag year">2020</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </a>
+
+    <a href="https://renude.co" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">29</span>
+        <span class="v-card-name">Renude</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-funding">&pound;246K raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">L'Or&eacute;al</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://renude.co" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">30</span>
+        <span class="v-card-name">Bequest</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / User Research</div>
+      <div class="v-card-funding">&pound;2M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://tapkit.com" target="_blank" rel="noopener" class="v-card reveal" data-status="acquired" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">31</span>
+        <span class="v-card-name">Tapkit</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Business Design / Product Design</div>
+      <div class="v-card-funding">Acquired by Noissue (2022)</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">L'Or&eacute;al</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status acquired">Acquired</span>
+      </div>
+    </a>
+
+    <a href="https://karmacist.com/" target="_blank" rel="noopener" class="v-card reveal" data-status="unknown" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">32</span>
+        <span class="v-card-name">Karmacist</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Product Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Guardian Media Group</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status">Unknown</span>
+      </div>
+    </a>
+
+    <div class="v-card no-link reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">33</span>
+        <span class="v-card-name">Abydos</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Guardian Media Group</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </div>
+
+    <a href="https://www.ndyglobal.com/" target="_blank" rel="noopener" class="v-card reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">34</span>
+        <span class="v-card-name">NDY</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Pitch Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">easyJet</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </a>
+
+    <div class="v-card no-link reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">35</span>
+        <span class="v-card-name">Caper</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">LEGO</span>
+        <span class="v-tag year">2019</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </div>
+
+    <a href="https://usehammock.com" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">36</span>
+        <span class="v-card-name">Hammock</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Branding / Business Design</div>
+      <div class="v-card-funding">&pound;6.7M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Aviva</span>
+        <span class="v-tag year">2018</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://yepic.ai" target="_blank" rel="noopener" class="v-card reveal" data-status="active" data-funded="true">
+      <div class="v-card-top">
+        <span class="v-card-num">37</span>
+        <span class="v-card-name">Yepic AI</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Business Design</div>
+      <div class="v-card-funding">&pound;1.9M raised</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">CSC</span>
+        <span class="v-tag year">2018</span>
+        <span class="v-tag status">Active</span>
+      </div>
+    </a>
+
+    <a href="https://playblinq.com/" target="_blank" rel="noopener" class="v-card reveal" data-status="dead" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">38</span>
+        <span class="v-card-name">Blinq</span>
+        <span class="v-card-arrow">&nearr;</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design / Product Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Holtzbrinck</span>
+        <span class="v-tag year">2018</span>
+        <span class="v-tag status dead">Dead</span>
+      </div>
+    </a>
+
+    <div class="v-card no-link reveal" data-status="unknown" data-funded="false">
+      <div class="v-card-top">
+        <span class="v-card-num">39</span>
+        <span class="v-card-name">Gigu</span>
+      </div>
+      <div class="v-card-role">Strategy / Business Design</div>
+      <div class="v-card-meta">
+        <span class="v-tag partner">Reckitt</span>
+        <span class="v-tag year">2022</span>
+        <span class="v-tag status">Unknown</span>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="page-footer">
+    &copy; 2026 <a href="index.html">Alex Daish</a> &mdash; Built with taste and moderate effort.
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Filters
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.v-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          const status = card.dataset.status;
+          const funded = card.dataset.funded === 'true';
+
+          let show = true;
+          if (filter === 'active') show = status === 'active';
+          else if (filter === 'dead') show = status === 'dead';
+          else if (filter === 'acquired') show = status === 'acquired';
+          else if (filter === 'funded') show = funded;
+
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
