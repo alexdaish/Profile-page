@@ -139,15 +139,12 @@
       max-width: var(--max-w);
       margin: 0 auto;
       position: relative;
+      overflow: hidden;
     }
 
-    .hero-label {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 32px;
+    .hero-name, .hero-tagline {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-name {
@@ -176,38 +173,26 @@
       margin-bottom: 56px;
     }
 
-    .hero-meta {
-      display: flex;
-      gap: 40px;
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.06em;
-      color: var(--text-muted-dark);
+    #heroBlob {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
-
-    .hero-meta a {
-      color: var(--text-muted-dark);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .hero-meta a:hover { color: var(--orange); }
 
     /* hero entrance */
-    .hero-label,
     .hero-name .first,
     .hero-name .last,
-    .hero-tagline,
-    .hero-meta {
+    .hero-tagline {
       opacity: 0;
       transform: translateY(40px);
       animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-label { animation-delay: 0.1s; }
-    .hero-name .first { animation-delay: 0.2s; display: block; }
+    .hero-name .first { animation-delay: 0.1s; display: block; }
     .hero-name .last { animation-delay: 0.35s; display: block; }
     .hero-tagline { animation-delay: 0.55s; }
-    .hero-meta { animation-delay: 0.75s; }
 
     @keyframes hero-in {
       to { opacity: 1; transform: translateY(0); }
@@ -788,11 +773,6 @@
         padding: 40px 0;
       }
 
-      .hero-meta {
-        flex-direction: column;
-        gap: 8px;
-      }
-
       .contact-links {
         flex-direction: column;
         align-items: center;
@@ -822,17 +802,12 @@
 
   <!-- Hero -->
   <header class="hero" id="top">
-    <div class="hero-label">Venture Design Lead &mdash; London</div>
     <h1 class="hero-name">
       <span class="first">Alex</span>
       <span class="last">Daish</span>
     </h1>
     <p class="hero-tagline">I like to use my imagination to solve problems in exchange for money.</p>
-    <div class="hero-meta">
-      <span>Founders Factory</span>
-      <span>Est. 2017</span>
-      <a href="#contact">Get in touch</a>
-    </div>
+    <canvas id="heroBlob"></canvas>
   </header>
 
   <!-- Marquee -->
@@ -1165,6 +1140,95 @@
     }, { threshold: 0.5 });
 
     document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+    // Interactive dot grid
+    (function() {
+      var canvas = document.getElementById('heroBlob');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      var mouse = { x: -9999, y: -9999 };
+      var hasMouse = false;
+      var t = 0;
+      var spacing = 40;
+      var influenceRadius = 160;
+      var baseSize = 1.2;
+      var maxSize = 3.5;
+      var maxShift = 12;
+
+      function resize() {
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = canvas.offsetHeight * dpr;
+        ctx.scale(dpr, dpr);
+      }
+      resize();
+      window.addEventListener('resize', function() {
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        resize();
+      });
+
+      canvas.parentElement.addEventListener('mousemove', function(e) {
+        var rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+        hasMouse = true;
+      });
+
+      canvas.parentElement.addEventListener('mouseleave', function() {
+        hasMouse = false;
+      });
+
+      function draw() {
+        t += 0.006;
+        var w = canvas.offsetWidth;
+        var h = canvas.offsetHeight;
+        ctx.clearRect(0, 0, w, h);
+
+        // idle cursor position when no mouse
+        var mx = hasMouse ? mouse.x : w * (0.3 + Math.sin(t) * 0.15);
+        var my = hasMouse ? mouse.y : h * (0.5 + Math.cos(t * 0.7) * 0.12);
+
+        var cols = Math.ceil(w / spacing) + 1;
+        var rows = Math.ceil(h / spacing) + 1;
+        var offsetX = (w - (cols - 1) * spacing) / 2;
+        var offsetY = (h - (rows - 1) * spacing) / 2;
+
+        for (var r = 0; r < rows; r++) {
+          for (var c = 0; c < cols; c++) {
+            var gx = offsetX + c * spacing;
+            var gy = offsetY + r * spacing;
+
+            var dx = mx - gx;
+            var dy = my - gy;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            var factor = Math.max(0, 1 - dist / influenceRadius);
+            var ease = factor * factor;
+
+            // dots shift away from cursor
+            var shiftX = dist > 0 ? (-dx / dist) * maxShift * ease : 0;
+            var shiftY = dist > 0 ? (-dy / dist) * maxShift * ease : 0;
+
+            var px = gx + shiftX;
+            var py = gy + shiftY;
+            var size = baseSize + (maxSize - baseSize) * ease;
+
+            // color: muted by default, orange near cursor
+            var alpha = 0.12 + 0.6 * ease;
+            var red = Math.round(122 + (255 - 122) * ease);
+            var green = Math.round(126 + (107 - 126) * ease);
+            var blue = Math.round(150 + (43 - 150) * ease);
+
+            ctx.beginPath();
+            ctx.arc(px, py, size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
+            ctx.fill();
+          }
+        }
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
 
     // Parallax fade on hero scroll
     const heroContent = document.querySelector('.hero');
