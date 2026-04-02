@@ -142,9 +142,18 @@
       overflow: hidden;
     }
 
-    .hero-name, .hero-tagline {
+    .hero-label, .hero-name, .hero-tagline {
       position: relative;
       z-index: 1;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 32px;
     }
 
     .hero-name {
@@ -183,6 +192,7 @@
     }
 
     /* hero entrance */
+    .hero-label,
     .hero-name .first,
     .hero-name .last,
     .hero-tagline {
@@ -190,7 +200,8 @@
       transform: translateY(40px);
       animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-name .first { animation-delay: 0.1s; display: block; }
+    .hero-label { animation-delay: 0.1s; }
+    .hero-name .first { animation-delay: 0.2s; display: block; }
     .hero-name .last { animation-delay: 0.35s; display: block; }
     .hero-tagline { animation-delay: 0.55s; }
 
@@ -802,6 +813,7 @@
 
   <!-- Hero -->
   <header class="hero" id="top">
+    <div class="hero-label">Venture Design &mdash; London</div>
     <h1 class="hero-name">
       <span class="first">Alex</span>
       <span class="last">Daish</span>
