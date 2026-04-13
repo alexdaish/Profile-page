@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Projects — Alex Daish</title>
+  <meta name="description" content="Creative projects, product concepts, and side ventures from before (and during) startup life.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0A0A14;
+      --bg-warm: #F0F2F8;
+      --bg-card: #12121E;
+      --text-light: #F0F0F5;
+      --text-dark: #0A0A14;
+      --text-muted: #7A7E96;
+      --accent: #0000FF;
+      --orange: #FF6B2B;
+      --rule: rgba(240, 240, 245, 0.08);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Outfit', -apple-system, sans-serif;
+      --mono: 'Space Mono', 'Courier New', monospace;
+      --max-w: 1200px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    ::selection { background: var(--orange); color: white; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--text-light);
+      background: var(--bg-dark);
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    a { color: inherit; }
+
+    /* ============ HEADER ============ */
+    .header {
+      padding: 40px 40px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover { color: var(--orange); }
+
+    /* ============ HERO ============ */
+    .page-hero {
+      padding: 80px 40px 60px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .page-hero h1 em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    /* ============ PROJECTS ============ */
+    .projects {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px 120px;
+    }
+
+    .project {
+      border-top: 1px solid var(--rule);
+      padding: 80px 0;
+    }
+
+    .project-num {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    .project-title a {
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .project-title a:hover {
+      color: var(--orange);
+    }
+
+    .project-context {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background: var(--bg-card);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-body p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .project-stats {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border-radius: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .project-stat {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--text-light);
+    }
+
+    .project-stat strong {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .project-link::after {
+      content: ' \2197';
+    }
+
+    /* ============ HONOURABLE MENTIONS ============ */
+    .mentions {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px 120px;
+    }
+
+    .mentions-heading {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.1;
+      margin-bottom: 48px;
+    }
+
+    .mentions-heading em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .mentions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .mention {
+      padding: 24px 0;
+      border-top: 1px solid var(--rule);
+    }
+
+    .mention-title {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .mention-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .mention-year {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* ============ FOOTER ============ */
+    .page-footer {
+      text-align: center;
+      padding: 32px 40px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--rule);
+    }
+
+    .page-footer a {
+      color: var(--orange);
+      text-decoration: none;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 768px) {
+      .page-hero, .header, .projects, .mentions { padding-left: 24px; padding-right: 24px; }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .project-image {
+        order: -1;
+      }
+
+      .mentions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project { padding: 48px 0; }
+      .page-footer { padding: 24px; }
+    }
+
+    /* ============ ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-link">&larr; Alex Daish</a>
+  </div>
+
+  <div class="page-hero">
+    <h1 class="reveal">Other <em>Projects</em></h1>
+    <p class="reveal">Before I built startups for a living, I built things for fun, for brands, and for no good reason at all. These are the ones worth showing.</p>
+  </div>
+
+  <div class="projects">
+
+    <!-- 01 — C.A.T.S -->
+    <div class="project reveal">
+      <span class="project-num">01</span>
+      <h2 class="project-title"><a href="https://www.kickstarter.com/projects/1115177097/the-citizens-advertising-takeover-service-cats/description" target="_blank" rel="noopener">Citizens Advertising Takeover Service</a></h2>
+      <div class="project-context">Glimpse &middot; Crowdfunding &middot; Creative Campaign &middot; 2016</div>
+      <div class="project-grid">
+        <div class="project-image">
+          <img src="images/projects/cats-station.jpg" alt="Clapham Common tube station covered in cat posters">
+        </div>
+        <div class="project-body">
+          <p>Born from a hack day asking &ldquo;what would the world look like if people coveted experiences, not things?&rdquo; &mdash; we created C.A.T.S, a crowdfunded campaign to replace every advert in Clapham Common tube station with pictures of cats. I contributed copywriting, campaign strategy, and filming for the Kickstarter video.</p>
+          <p>The campaign raised &pound;23,131 on a &pound;0 marketing budget, was endorsed by Kickstarter as a &ldquo;project we love,&rdquo; approved by TfL, and installed by Exterion Media. When the posters went up, the story generated over 60,000 news articles across four continents. CNN, BBC, Washington Post, The Guardian, and every major newswire covered it. Online videos by BBC, Mic, and AJ+ received a combined 12 million views. It became one of the most-shared news stories of 2016.</p>
+          <div class="project-stats">
+            <span class="project-stat"><strong>&pound;23,131</strong> raised</span>
+            <span class="project-stat"><strong>60,000+</strong> news articles</span>
+            <span class="project-stat"><strong>12M</strong> video views</span>
+            <span class="project-stat"><strong>&pound;0</strong> budget</span>
+          </div>
+          <a href="https://www.kickstarter.com/projects/1115177097/the-citizens-advertising-takeover-service-cats/description" class="project-link" target="_blank" rel="noopener">View on Kickstarter</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 — Google Recall -->
+    <div class="project reveal">
+      <span class="project-num">02</span>
+      <h2 class="project-title">Google Recall</h2>
+      <div class="project-context">Google &middot; Machine Learning Product Concept &middot; AKQA &middot; 2016</div>
+      <div class="project-grid">
+        <div class="project-image">
+          <img src="images/projects/google-recall.jpg" alt="Google Recall product concept">
+        </div>
+        <div class="project-body">
+          <p>Google challenged us to create a product using TensorFlow that solved a real-world problem. We started with ageing and memory loss &mdash; 20% of over-60s face mild cognitive impairment, and our increasing reliance on search may be making it worse. The insight: after years of us asking Google questions, what if Google could ask us questions?</p>
+          <p>Google Recall used computer vision and NLP to surface personal photos and generate memory-recall exercises &mdash; essentially Google Photos in reverse. Instead of finding photos by keywords, the keywords became answers to questions about each picture. The prototype used pre-applied ML to validate answers via voice or text. The concept was designed to work in the between moments of life: as a phone lock screen, a Chromecast screensaver, or within the Google Home.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 — Backpack -->
+    <div class="project reveal">
+      <span class="project-num">03</span>
+      <h2 class="project-title">Backpack</h2>
+      <div class="project-context">AKQA &middot; Startup Pitch &middot; EdTech Concept &middot; 2016</div>
+      <div class="project-grid">
+        <div class="project-image">
+          <img src="images/projects/backpack.jpg" alt="Backpack EdTech concept">
+        </div>
+        <div class="project-body">
+          <p>The brief was open-ended: pitch a startup idea. We started with a question &mdash; how can every child reach their full potential? Our research found that smaller class sizes in private schools create tighter feedback loops, and that studying at home has three times as much impact as school. We also found a critical behavioural transition: children go from doing homework at the kitchen table to studying alone in their room, and parents lose visibility overnight.</p>
+          <p>Backpack used affective computing to read a child&rsquo;s emotions and engagement through their laptop camera as they studied. Over time, this revealed individual learning habits. When frustration was detected, it could offer help or notify a parent. The business model was simple: one hour of tutoring costs &pound;25, one year of Backpack costs &pound;25. A 5% share of UK 12&ndash;15 year olds would generate &pound;6.2M in annual revenue.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 — Dogwatisaw -->
+    <div class="project reveal">
+      <span class="project-num">04</span>
+      <h2 class="project-title"><a href="https://twitter.com/dogwatisaw" target="_blank" rel="noopener">Dogwatisaw</a></h2>
+      <div class="project-context">Personal Project &middot; Illustration &middot; 2015&ndash;ongoing(ish)</div>
+      <div class="project-grid">
+        <div class="project-image">
+          <img src="images/projects/dogwatisaw-grid.jpg" alt="Grid of Dogwatisaw dog illustrations">
+        </div>
+        <div class="project-body">
+          <p>On joining a creative agency I needed an untainted creative outlet. I combined a passion for doodling with a newer passion for dogs. The rules were simple: draw one dog every day, from life, and share it online.</p>
+          <p>The account built a loyal following including journalists from the FT, Guardian, and The Independent, plus Olympian sprinter Jodie Williams and photographer Rankin. It was featured by BuzzFeed and given its own Twitter Moment. Someone got one of the dogs tattooed on their body. The dogs were never anatomically accurate. That was part of the charm.</p>
+          <div class="project-stats">
+            <span class="project-stat"><strong>400K+</strong> followers</span>
+            <span class="project-stat"><strong>7M+</strong> impressions</span>
+            <span class="project-stat"><strong>1</strong> tattoo</span>
+          </div>
+          <a href="https://twitter.com/dogwatisaw" class="project-link" target="_blank" rel="noopener">View on Twitter</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Honourable Mentions -->
+  <div class="mentions">
+    <h2 class="mentions-heading reveal">Honourable <em>mentions.</em></h2>
+    <div class="mentions-grid">
+
+      <div class="mention reveal">
+        <div class="mention-title">Volvo Lifestyle Selector</div>
+        <div class="mention-desc">Choose-your-own-adventure style car recommender built during a design sprint with Volvo Cars.</div>
+        <span class="mention-year">2017</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">Like-AR (Canon)</div>
+        <div class="mention-desc">AR app concept using social media engagement data to show photographers where to stand for maximum likes.</div>
+        <span class="mention-year">2018</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">Volvo Cars Perfume &ldquo;Nordic Mist&rdquo;</div>
+        <div class="mention-desc">Proposed Volvo launch their own fragrance to reposition from safe-and-boxy to progressive luxury.</div>
+        <span class="mention-year">2018</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">AKQA Gift Wrapp-AR</div>
+        <div class="mention-desc">AR tool that scans a gift, computes ideal wrapping paper dimensions, and projects cut lines. Christmas card competition entry.</div>
+        <span class="mention-year">2017</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">Comedy for Relief (Comic Relief)</div>
+        <div class="mention-desc">Subscription comedy streaming platform concept, like Calm but for Comic Relief sketch archives.</div>
+        <span class="mention-year">2016</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">GiggyPop</div>
+        <div class="mention-desc">Kickstarter-for-gig-tickets startup. Won first prize at a Hyper Island/Startup Weekend hackathon. Joined Techstars pre-accelerator. I left before that.</div>
+        <span class="mention-year">2015</span>
+      </div>
+
+      <div class="mention reveal">
+        <div class="mention-title">Free Hype</div>
+        <div class="mention-desc">Platform connecting emerging musicians with music bloggers. Ran for 3 years.</div>
+        <span class="mention-year">2012&ndash;2015</span>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    &copy; 2026 <a href="index.html">Alex Daish</a> &mdash; Built with taste and moderate effort.
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
