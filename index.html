@@ -355,6 +355,17 @@
       filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(350deg);
     }
 
+    /* Knockout-fill logos (a solid block with white lettering) collapse
+       into a grey blob under brightness(0), so desaturate them instead —
+       the wordmark stays readable — and reveal full brand colour on hover. */
+    .logo-item.brand img {
+      filter: grayscale(1);
+    }
+
+    .logo-item.brand:hover img {
+      filter: none;
+    }
+
     /* ============ SECTIONS ============ */
     section {
       padding: var(--section-pad) 40px;
@@ -961,8 +972,10 @@
       <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
       <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
       <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
+      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO"></span>
       <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
       <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
+      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC"></span>
       <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
       <!-- duplicate for seamless loop -->
       <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
@@ -979,8 +992,10 @@
       <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
       <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
       <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
+      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO"></span>
       <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
       <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
+      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC"></span>
       <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
     </div>
   </div>
