@@ -4,36 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alex Daish — Venture Design Lead</title>
-  <meta name="description" content="Alex Daish builds startups from scratch at Founders Factory. 39 ventures, £64M+ raised, and proof that imagination is a professional skill.">
+  <meta name="description" content="Alex Daish builds startups from scratch at Founders Factory. Venture portfolio, career history, and proof that imagination is a professional skill.">
   <meta property="og:title" content="Alex Daish — Venture Design Lead">
   <meta property="og:description" content="I like to use my imagination to solve problems in exchange for money.">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #F5EFE2;
-      --paper-raised: #FFFDF6;
-      --ink: #131311;
-      --blue: #2B24F5;
-      --orange: #FF5A1F;
-      --yellow: #EFFF38;
-      --pink: #FFB4E1;
-      --muted: #6E6A5E;
-      --muted-on-ink: #A5A296;
+      --bg-dark: #0A0A14;
+      --bg-warm: #F0F2F8;
+      --bg-card: #10101E;
+      --text-light: #F0F0F5;
+      --text-dark: #0A0A14;
+      --text-muted-dark: #7A7E96;
+      --text-muted-light: #6B6F82;
+      --accent: #0000FF;
+      --accent-dim: rgba(0, 0, 255, 0.12);
+      --orange: #FF6B2B;
+      --rule-dark: rgba(240, 240, 245, 0.1);
+      --rule-light: rgba(10, 10, 20, 0.1);
       --serif: 'Instrument Serif', Georgia, serif;
       --sans: 'Outfit', -apple-system, sans-serif;
       --mono: 'Space Mono', 'Courier New', monospace;
-      --display: 'Archivo Black', 'Outfit', sans-serif;
-      --border: 2px solid var(--ink);
-      --max-w: 1280px;
-      --section-pad: clamp(90px, 12vw, 160px);
+      --max-w: 1200px;
+      --section-pad: clamp(100px, 14vw, 180px);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    ::selection { background: var(--blue); color: var(--yellow); }
+    ::selection {
+      background: var(--orange);
+      color: white;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -44,10 +48,10 @@
     body {
       font-family: var(--sans);
       font-size: 17px;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.7;
-      color: var(--ink);
-      background: var(--paper);
+      color: var(--text-light);
+      background: var(--bg-dark);
       overflow-x: hidden;
     }
 
@@ -58,17 +62,20 @@
       inset: 0;
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.04;
+      opacity: 0.035;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-repeat: repeat;
       background-size: 256px 256px;
     }
 
     /* ============ SCROLLBAR ============ */
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--paper); }
-    ::-webkit-scrollbar-thumb { background: var(--ink); border-radius: 0; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 255, 0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
 
     /* ============ NAV ============ */
     .nav {
@@ -77,53 +84,48 @@
       left: 0;
       right: 0;
       z-index: 100;
-      padding: 14px 32px;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--paper);
-      border-bottom: var(--border);
+      background: rgba(12, 11, 9, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
       transform: translateY(-100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
     }
 
-    .nav.visible { transform: translateY(0); }
+    .nav.visible {
+      transform: translateY(0);
+      border-bottom-color: var(--rule-dark);
+    }
 
     .nav-name {
-      font-family: var(--display);
-      font-size: 16px;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--text-light);
       text-decoration: none;
     }
 
-    .nav-name span { color: var(--orange); }
-
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 36px;
       list-style: none;
     }
 
     .nav-links a {
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--ink);
+      font-size: 12px;
+      color: var(--text-muted-dark);
       text-decoration: none;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 6px 14px;
-      border: var(--border);
-      background: var(--paper-raised);
-      transition: all 0.2s;
+      transition: color 0.3s;
     }
 
     .nav-links a:hover {
-      background: var(--yellow);
-      box-shadow: 3px 3px 0 var(--ink);
-      transform: translate(-1px, -1px);
+      color: var(--orange);
     }
 
     /* ============ HERO ============ */
@@ -132,22 +134,107 @@
       min-height: 100svh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 100px 32px 40px;
-      position: relative;
-      overflow: hidden;
-      border-bottom: var(--border);
-    }
-
-    .hero-inner {
+      justify-content: flex-end;
+      padding: 0 40px 80px;
       max-width: var(--max-w);
       margin: 0 auto;
-      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-label, .hero-name, .hero-tagline, .hero-meta, .hero-ctas {
       position: relative;
       z-index: 1;
     }
 
-    #heroDots {
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 32px;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(72px, 13vw, 160px);
+      line-height: 0.88;
+      letter-spacing: -0.03em;
+      color: var(--text-light);
+      margin-bottom: 48px;
+    }
+
+    .hero-name .first { display: block; }
+    .hero-name .last {
+      display: block;
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-style: italic;
+      line-height: 1.35;
+      max-width: 580px;
+      color: var(--text-muted-dark);
+      margin-bottom: 36px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted-dark);
+      margin-bottom: 44px;
+    }
+
+    .hero-meta .dot { color: var(--orange); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--text-light);
+      text-decoration: none;
+      padding: 15px 30px;
+      border: 1px solid var(--rule-dark);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-cta:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .hero-cta.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .hero-cta.primary:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: white;
+    }
+
+    #heroBlob {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -156,321 +243,122 @@
       z-index: 0;
     }
 
-    .hero-topline {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: clamp(24px, 4vw, 48px);
-    }
-
-    .hero-label {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--paper);
-      background: var(--ink);
-      padding: 6px 14px;
-    }
-
-    .hero-label-dot {
-      width: 10px; height: 10px;
-      background: var(--orange);
-      border: var(--border);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.4); }
-    }
-
-    .hero-avail {
-      font-family: var(--mono);
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    .hero-name {
-      font-family: var(--display);
-      font-size: clamp(58px, 12.5vw, 168px);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: clamp(28px, 4vw, 48px);
-      position: relative;
-    }
-
-    .hero-name .first { display: block; }
-    .hero-name .last {
-      display: block;
-      color: transparent;
-      -webkit-text-stroke: 3px var(--ink);
-      position: relative;
-    }
-
-    @media (max-width: 600px) {
-      .hero-name .last { -webkit-text-stroke: 2px var(--ink); }
-    }
-
-    /* stickers */
-    .sticker {
-      position: absolute;
-      font-family: var(--mono);
-      font-size: clamp(10px, 1.1vw, 13px);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 8px 16px;
-      border: var(--border);
-      box-shadow: 4px 4px 0 var(--ink);
-      white-space: nowrap;
-      z-index: 2;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .sticker:hover { transform: rotate(0deg) scale(1.06) !important; }
-
-    .sticker-ventures {
-      background: var(--yellow);
-      color: var(--ink);
-      top: -6%;
-      right: 4%;
-      transform: rotate(6deg);
-    }
-
-    .sticker-raised {
-      background: var(--blue);
-      color: var(--paper);
-      bottom: 12%;
-      right: 14%;
-      transform: rotate(-5deg);
-      box-shadow: 4px 4px 0 var(--orange);
-    }
-
-    .hero-tagline {
-      font-family: var(--serif);
-      font-size: clamp(24px, 3.2vw, 40px);
-      font-style: italic;
-      line-height: 1.3;
-      max-width: 680px;
-      color: var(--ink);
-      margin-bottom: clamp(28px, 4vw, 44px);
-    }
-
-    .hero-tagline .hl {
-      background: linear-gradient(transparent 55%, var(--yellow) 55%);
-      font-style: italic;
-    }
-
-    .hero-cta-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: var(--mono);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 16px 30px;
-      border: var(--border);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--paper);
-      box-shadow: 5px 5px 0 var(--orange);
-    }
-
-    .btn-primary:hover {
-      background: var(--blue);
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0 var(--orange);
-    }
-
-    .btn-ghost {
-      background: var(--paper-raised);
-      color: var(--ink);
-    }
-
-    .btn-ghost:hover {
-      background: var(--yellow);
-      transform: translate(-2px, -2px);
-      box-shadow: 5px 5px 0 var(--ink);
-    }
-
-    .hero-scroll {
-      position: absolute;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--mono);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      z-index: 1;
-      animation: bob 2.2s ease-in-out infinite;
-    }
-
-    @keyframes bob {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, 8px); }
-    }
-
     /* hero entrance */
-    .hero-topline, .hero-name .first, .hero-name .last,
-    .hero-tagline, .hero-cta-row, .sticker {
+    .hero-label,
+    .hero-name .first,
+    .hero-name .last,
+    .hero-tagline,
+    .hero-meta,
+    .hero-ctas {
       opacity: 0;
-      animation: hero-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform: translateY(40px);
+      animation: hero-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .hero-topline { animation-delay: 0.05s; }
-    .hero-name .first { animation-delay: 0.15s; }
-    .hero-name .last { animation-delay: 0.28s; }
-    .hero-tagline { animation-delay: 0.45s; }
-    .hero-cta-row { animation-delay: 0.6s; }
-    .sticker-ventures { animation-delay: 0.8s; }
-    .sticker-raised { animation-delay: 0.95s; }
+    .hero-label { animation-delay: 0.1s; }
+    .hero-name .first { animation-delay: 0.2s; display: block; }
+    .hero-name .last { animation-delay: 0.35s; display: block; }
+    .hero-tagline { animation-delay: 0.55s; }
+    .hero-meta { animation-delay: 0.7s; }
+    .hero-ctas { animation-delay: 0.85s; }
 
     @keyframes hero-in {
-      from { opacity: 0; translate: 0 36px; }
-      to { opacity: 1; translate: 0 0; }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ============ TICKER ============ */
-    .ticker-wrap {
-      background: var(--ink);
-      border-bottom: var(--border);
-      padding: 16px 0;
+    /* ============ MARQUEE ============ */
+    .marquee-wrap {
       overflow: hidden;
+      border-top: 1px solid var(--rule-dark);
+      border-bottom: 1px solid var(--rule-dark);
+      padding: 20px 0;
+      background: var(--bg-dark);
     }
 
-    .ticker {
+    .marquee {
       display: flex;
       width: max-content;
-      animation: ticker-scroll 30s linear infinite;
+      animation: marquee-scroll 40s linear infinite;
     }
 
-    .ticker span {
-      font-family: var(--display);
-      font-size: clamp(15px, 1.8vw, 20px);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--yellow);
+    .marquee span {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--text-muted-dark);
       white-space: nowrap;
-      padding: 0 18px;
+      padding: 0 24px;
     }
 
-    .ticker span.star { color: var(--orange); }
+    .marquee span.sep {
+      color: var(--accent);
+      font-style: normal;
+    }
 
-    @keyframes ticker-scroll {
+    @keyframes marquee-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    /* ============ PROOF BAND ============ */
-    .proof {
-      background: var(--blue);
-      border-bottom: var(--border);
-      color: var(--paper);
-    }
-
-    .proof-grid {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .proof-stat {
-      padding: clamp(36px, 5vw, 64px) 28px;
-      border-left: 2px solid rgba(245, 239, 226, 0.25);
-      position: relative;
-    }
-
-    .proof-stat:first-child { border-left: none; }
-
-    .proof-num {
-      font-family: var(--display);
-      font-size: clamp(40px, 5.5vw, 76px);
-      line-height: 1;
-      margin-bottom: 14px;
-      color: var(--paper);
-    }
-
-    .proof-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      line-height: 1.6;
-    }
-
     /* ============ LOGO MARQUEE ============ */
-    .logo-band {
-      background: var(--paper);
-      border-bottom: var(--border);
-      padding: 28px 0 32px;
+    .logo-marquee-wrap {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--rule-dark);
+      border-bottom: 1px solid var(--rule-dark);
+      padding: 24px 0 28px;
       overflow: hidden;
     }
 
-    .logo-band-label {
+    .logo-marquee-label {
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted-dark);
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .logo-marquee {
       display: flex;
       width: max-content;
-      animation: ticker-scroll 50s linear infinite;
-      gap: 56px;
-      align-items: center;
+      animation: marquee-scroll 50s linear infinite;
+      gap: 48px;
     }
 
     .logo-item {
       display: inline-flex;
       align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted-dark);
       white-space: nowrap;
-      opacity: 0.65;
-      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0.45;
+      transition: opacity 0.3s;
     }
 
-    .logo-item:hover { opacity: 1; transform: scale(1.08); }
+    .logo-item:hover {
+      opacity: 1;
+    }
 
     .logo-item img {
       height: 28px;
       width: auto;
       max-width: 120px;
       object-fit: contain;
-      filter: brightness(0);
+      filter: brightness(0) invert(0.55);
+      transition: filter 0.3s;
+    }
+
+    .logo-item:hover img {
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(350deg);
     }
 
     /* ============ SECTIONS ============ */
-    section { padding: var(--section-pad) 32px; }
+    section {
+      padding: var(--section-pad) 40px;
+    }
 
     .section-inner {
       max-width: var(--max-w);
@@ -478,120 +366,139 @@
     }
 
     .section-label {
-      display: inline-block;
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--paper);
-      background: var(--ink);
-      padding: 6px 14px;
+      color: var(--orange);
       margin-bottom: 32px;
-      transform: rotate(-1.5deg);
     }
 
     .section-heading {
-      font-family: var(--display);
-      font-size: clamp(34px, 5.5vw, 68px);
-      line-height: 1.02;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
-      margin-bottom: 28px;
-      max-width: 900px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 800px;
     }
 
     .section-heading em {
-      font-family: var(--serif);
       font-style: italic;
-      text-transform: none;
-      font-size: 1.12em;
-      letter-spacing: 0;
+      color: var(--orange);
     }
 
     .section-subtext {
       font-size: 18px;
+      font-weight: 300;
       line-height: 1.7;
-      color: var(--muted);
-      max-width: 620px;
-      margin-bottom: 64px;
+      color: var(--text-muted-dark);
+      max-width: 640px;
+      margin-bottom: 72px;
     }
 
     /* ============ INTRO ============ */
-    .intro { background: var(--paper); border-bottom: var(--border); }
+    .intro {
+      background: var(--bg-dark);
+    }
 
     .intro-text {
       font-family: var(--serif);
-      font-size: clamp(26px, 3.6vw, 44px);
+      font-size: clamp(26px, 3.6vw, 42px);
       line-height: 1.35;
-      max-width: 1000px;
+      max-width: 920px;
     }
 
-    .intro-text .hl-y { background: linear-gradient(transparent 55%, var(--yellow) 55%); }
-    .intro-text .hl-p { background: linear-gradient(transparent 55%, var(--pink) 55%); }
-    .intro-text em { font-style: italic; color: var(--blue); }
+    .intro-text em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+      margin-top: 88px;
+      padding-top: 64px;
+      border-top: 1px solid var(--rule-dark);
+    }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      margin-bottom: 12px;
+      color: var(--orange);
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-dark);
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
 
     /* ============ VENTURES ============ */
     .ventures {
-      background: var(--paper);
-      border-bottom: var(--border);
-      position: relative;
+      background: var(--bg-warm);
+      color: var(--text-dark);
     }
 
-    .ventures .section-heading em { color: var(--blue); }
+    .ventures .section-label { color: var(--accent); }
+    .ventures .section-heading { color: var(--text-dark); }
+    .ventures .section-subtext { color: var(--text-muted-light); }
 
     .venture-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      counter-reset: venture;
+      border-top: 1px solid var(--rule-light);
     }
 
     .venture-item {
       display: grid;
-      grid-template-columns: 90px 1fr 260px;
-      gap: 0 36px;
-      padding: 40px 36px;
-      background: var(--paper-raised);
-      border: var(--border);
+      grid-template-columns: 64px 1fr 280px;
+      gap: 0 40px;
+      padding: 48px 0;
+      border-bottom: 1px solid var(--rule-light);
       align-items: start;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.3s;
+      margin: 0 -20px;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 8px;
     }
 
     .venture-item:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 var(--blue);
+      background: rgba(0, 0, 255, 0.04);
     }
 
     .venture-num {
-      font-family: var(--display);
-      font-size: clamp(28px, 3vw, 42px);
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--ink);
-      padding-top: 4px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-muted-light);
+      padding-top: 8px;
     }
+
+    .venture-main { }
 
     .venture-name {
-      font-family: var(--display);
-      font-size: clamp(26px, 3.2vw, 40px);
-      line-height: 1.05;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 14px;
-      transition: color 0.25s;
+      font-family: var(--serif);
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.1;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      transition: color 0.3s;
     }
 
-    .venture-item:hover .venture-name { color: var(--blue); }
+    .venture-item:hover .venture-name {
+      color: var(--orange);
+    }
 
     .venture-desc {
       font-size: 16px;
-      line-height: 1.65;
-      color: var(--muted);
-      max-width: 560px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: var(--text-muted-light);
+      max-width: 520px;
     }
 
     .venture-meta {
@@ -599,149 +506,133 @@
       flex-direction: column;
       align-items: flex-end;
       gap: 12px;
-      padding-top: 4px;
+      padding-top: 8px;
       text-align: right;
     }
-
-    .venture-outcome {
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border: var(--border);
-      background: var(--orange);
-      color: var(--ink);
-      transform: rotate(2deg);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-
-    .venture-outcome.build { background: var(--yellow); }
-    .venture-outcome.acquired { background: var(--pink); }
 
     .venture-tags {
       font-family: var(--mono);
       font-size: 11px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted-light);
+    }
+
+    .venture-outcome {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--orange);
+    }
+
+    .venture-outcome.dead {
+      color: var(--text-muted-light);
+      font-style: italic;
+      font-weight: 300;
     }
 
     .venture-year {
       font-family: var(--mono);
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-muted-light);
     }
 
-    .venture-year .press {
-      text-decoration: underline;
-      cursor: pointer;
-      color: var(--blue);
+    .venture-item.failed {
+      opacity: 0.7;
     }
 
-    .venture-arrow {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      font-family: var(--mono);
-      font-size: 18px;
-      opacity: 0;
-      transform: translate(-6px, 6px);
-      transition: all 0.25s;
-      color: var(--blue);
+    .venture-item.failed:hover {
+      opacity: 1;
     }
-
-    .venture-item:hover .venture-arrow { opacity: 1; transform: translate(0, 0); }
 
     .ventures-cta {
-      margin-top: 48px;
-      display: flex;
-      justify-content: center;
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .view-all {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 15px 32px;
+      border: 1px solid var(--rule-light);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .view-all:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
     }
 
     /* ============ METHOD ============ */
     .method {
-      background: var(--yellow);
-      border-bottom: var(--border);
+      background: var(--bg-warm);
+      color: var(--text-dark);
+      padding-top: 0;
     }
 
-    .method .section-label { transform: rotate(1.5deg); }
-    .method .section-subtext { color: var(--ink); opacity: 0.75; }
+    .method .section-label { color: var(--accent); }
+    .method .section-heading { color: var(--text-dark); }
+    .method .section-subtext { color: var(--text-muted-light); }
 
     .method-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
+      gap: 64px;
     }
 
     .method-step {
-      background: var(--paper-raised);
-      border: var(--border);
-      padding: 36px 32px 40px;
       position: relative;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
-    .method-step:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 var(--ink);
-    }
-
-    .method-step:nth-child(2) { transform: rotate(0.6deg); }
-    .method-step:nth-child(2):hover { transform: rotate(0deg) translate(-4px, -4px); }
-    .method-step:nth-child(3) { transform: rotate(-0.6deg); }
-    .method-step:nth-child(3):hover { transform: rotate(0deg) translate(-4px, -4px); }
 
     .method-step-number {
-      font-family: var(--display);
-      font-size: 64px;
+      font-family: var(--serif);
+      font-size: 80px;
       line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 2px var(--ink);
-      margin-bottom: 24px;
-      transition: color 0.3s;
+      color: var(--rule-light);
+      margin-bottom: 20px;
+      transition: color 0.4s;
     }
 
-    .method-step:hover .method-step-number { color: var(--orange); -webkit-text-stroke: 2px var(--ink); }
+    .method-step:hover .method-step-number {
+      color: var(--orange);
+    }
 
     .method-step h3 {
-      font-family: var(--display);
-      font-size: 19px;
-      text-transform: uppercase;
-      line-height: 1.25;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
       margin-bottom: 14px;
-      color: var(--ink);
+      color: var(--text-dark);
     }
 
     .method-step p {
       font-size: 15px;
-      color: var(--muted);
+      font-weight: 300;
+      color: var(--text-muted-light);
       line-height: 1.65;
     }
 
     /* ============ CAREER ============ */
     .career {
-      background: var(--ink);
-      color: var(--paper);
-      border-bottom: var(--border);
+      background: var(--bg-dark);
+      color: var(--text-light);
     }
 
-    .career .section-label {
-      background: var(--yellow);
-      color: var(--ink);
+    .timeline {
+      max-width: 900px;
     }
-
-    .career .section-heading em { color: var(--orange); }
-
-    .timeline { max-width: 940px; }
 
     .timeline-item {
       display: grid;
       grid-template-columns: 200px 1fr;
-      gap: 48px;
-      padding: 52px 0;
-      border-bottom: 2px solid rgba(245, 239, 226, 0.15);
+      gap: 56px;
+      padding: 56px 0;
+      border-bottom: 1px solid var(--rule-dark);
       align-items: start;
     }
 
@@ -751,148 +642,165 @@
     .timeline-period {
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--yellow);
-      padding-top: 8px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted-dark);
+      padding-top: 6px;
     }
 
     .timeline-role {
-      font-family: var(--display);
-      font-size: clamp(22px, 2.6vw, 30px);
-      text-transform: uppercase;
-      line-height: 1.15;
-      margin-bottom: 8px;
-      color: var(--paper);
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 6px;
+      color: var(--text-light);
     }
 
     .timeline-company {
       font-family: var(--mono);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 400;
       letter-spacing: 0.04em;
       color: var(--orange);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .timeline-desc {
       font-size: 16px;
       font-weight: 300;
-      color: var(--muted-on-ink);
-      line-height: 1.7;
+      color: var(--text-muted-dark);
+      line-height: 1.65;
     }
 
     /* ============ ALSO TRUE ============ */
     .also-true {
-      background: var(--ink);
-      color: var(--paper);
-      border-bottom: var(--border);
+      background: var(--bg-dark);
       padding-top: 0;
     }
 
-    .also-true .section-label {
-      background: var(--pink);
-      color: var(--ink);
+    .also-true .section-heading {
+      margin-bottom: 56px;
     }
-
-    .also-true .section-heading { margin-bottom: 56px; }
-    .also-true .section-heading em { color: var(--pink); }
 
     .also-list {
       list-style: none;
-      max-width: 880px;
+      max-width: 840px;
     }
 
     .also-list li {
       font-family: var(--serif);
-      font-size: clamp(19px, 2.2vw, 26px);
+      font-size: clamp(19px, 2.2vw, 24px);
       font-style: italic;
       line-height: 1.5;
-      padding: 30px 0;
-      border-bottom: 2px solid rgba(245, 239, 226, 0.15);
-      color: var(--muted-on-ink);
-      transition: color 0.3s, padding-left 0.3s;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule-dark);
+      color: var(--text-muted-dark);
+      transition: color 0.3s;
     }
 
-    .also-list li:first-child { border-top: 2px solid rgba(245, 239, 226, 0.15); }
+    .also-list li:first-child {
+      border-top: 1px solid var(--rule-dark);
+    }
 
     .also-list li:hover {
-      color: var(--paper);
-      padding-left: 12px;
-    }
-
-    .also-list li strong {
-      color: var(--paper);
-      font-weight: 400;
-      font-style: normal;
+      color: var(--text-light);
     }
 
     .also-list li a {
-      color: var(--yellow);
+      color: var(--orange);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .also-list li a:hover { color: var(--orange); }
-    .also-list li a strong { color: inherit; }
+    .also-list li a:hover {
+      color: var(--accent);
+    }
+
+    .also-list li a strong {
+      color: inherit;
+    }
+
+    .also-list li strong {
+      color: var(--text-light);
+      font-weight: 400;
+      font-style: normal;
+    }
 
     /* ============ CONTACT ============ */
     .contact {
-      background: var(--orange);
+      background: var(--bg-warm);
+      color: var(--text-dark);
       text-align: center;
-      border-bottom: var(--border);
     }
 
-    .contact .section-label {
-      transform: rotate(-2deg);
+    .contact .section-heading {
+      color: var(--text-dark);
+      max-width: 100%;
+      margin: 0 auto 16px;
     }
 
-    .contact-heading {
-      font-family: var(--display);
-      font-size: clamp(44px, 8vw, 110px);
-      line-height: 0.98;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 20px;
-    }
-
-    .contact-heading em {
-      font-family: var(--serif);
-      font-style: italic;
-      text-transform: none;
-      font-size: 1.1em;
-      color: var(--paper-raised);
-      -webkit-text-stroke: 0;
+    .contact .section-heading em,
+    .ventures .section-heading em,
+    .method .section-heading em {
+      color: var(--accent);
     }
 
     .contact-sub {
       font-size: 18px;
-      color: var(--ink);
-      opacity: 0.8;
+      font-weight: 300;
+      color: var(--text-muted-light);
       margin-bottom: 56px;
     }
 
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-    .contact .btn-ghost { background: var(--paper); }
-    .contact .btn-primary { box-shadow: 5px 5px 0 var(--yellow); }
-    .contact .btn-primary:hover { box-shadow: 8px 8px 0 var(--yellow); }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: var(--text-dark);
+      text-decoration: none;
+      padding: 16px 32px;
+      border: 1px solid var(--rule-light);
+      border-radius: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .contact-link:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    .contact-link.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .contact-link.primary:hover {
+      background: var(--orange);
+      color: white;
+      border-color: var(--orange);
+    }
 
     /* ============ FOOTER ============ */
     footer {
-      background: var(--ink);
+      background: var(--bg-warm);
       text-align: center;
-      padding: 28px 32px;
+      padding: 32px 40px;
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted-on-ink);
+      letter-spacing: 0.06em;
+      color: var(--text-muted-light);
+      border-top: 1px solid var(--rule-light);
     }
 
     /* ============ ANIMATIONS ============ */
@@ -912,6 +820,9 @@
     .reveal-d2 { transition-delay: 0.16s; }
     .reveal-d3 { transition-delay: 0.24s; }
     .reveal-d4 { transition-delay: 0.32s; }
+    .reveal-d5 { transition-delay: 0.40s; }
+    .reveal-d6 { transition-delay: 0.48s; }
+    .reveal-d7 { transition-delay: 0.56s; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -920,21 +831,21 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .reveal { opacity: 1; transform: none; }
+      .reveal, .hero-label, .hero-name .first, .hero-name .last,
+      .hero-tagline, .hero-meta, .hero-ctas {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 1000px) {
-      .proof-grid { grid-template-columns: repeat(2, 1fr); }
-      .proof-stat:nth-child(3) { border-left: none; }
-      .proof-stat:nth-child(3), .proof-stat:nth-child(4) {
-        border-top: 2px solid rgba(245, 239, 226, 0.25);
+      .intro-stats {
+        grid-template-columns: repeat(2, 1fr);
       }
-
       .venture-item {
-        grid-template-columns: 56px 1fr;
+        grid-template-columns: 48px 1fr;
         gap: 0 24px;
-        padding: 32px 28px;
       }
       .venture-meta {
         grid-column: 2;
@@ -942,38 +853,61 @@
         text-align: left;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px 16px;
-        margin-top: 20px;
+        gap: 8px 16px;
+        margin-top: 16px;
       }
-      .method-grid { grid-template-columns: 1fr; gap: 24px; }
-      .sticker-raised { display: none; }
+      .method-grid {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
     }
 
     @media (max-width: 768px) {
-      section { padding: var(--section-pad) 22px; }
-      .hero { padding: 90px 22px 70px; }
-      .nav { padding: 12px 16px; }
-      .nav-links { gap: 6px; }
-      .nav-links a { padding: 5px 10px; font-size: 10px; }
+      section { padding: var(--section-pad) 24px; }
+      .hero { padding: 0 24px 60px; }
+      .nav { padding: 16px 24px; }
+      .nav-links { gap: 24px; }
+
+      .intro-stats {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .venture-item {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 36px 20px;
+      }
+      .venture-num { display: none; }
+      .venture-meta {
+        grid-column: 1;
+        margin-top: 16px;
+      }
 
       .timeline-item {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 8px;
         padding: 40px 0;
       }
 
-      .contact-links { flex-direction: column; align-items: center; }
-      .sticker-ventures { top: -9%; right: 0; }
+      .contact-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-height: 760px) and (min-width: 769px) {
+      .hero-name { font-size: clamp(64px, 10vw, 120px); margin-bottom: 32px; }
+      .hero-tagline { margin-bottom: 28px; }
+      .hero-meta { margin-bottom: 32px; }
     }
 
     @media (max-width: 480px) {
-      section { padding: clamp(60px, 10vw, 100px) 18px; }
-      .venture-item { padding: 26px 20px; grid-template-columns: 1fr; }
-      .venture-num { display: none; }
-      .venture-meta { grid-column: 1; }
-      footer { padding: 22px 18px; }
-      .hero-cta-row .btn { width: 100%; justify-content: center; }
-      .sticker-ventures { display: none; }
+      .hero-name { margin-bottom: 36px; }
+      .hero-tagline { margin-bottom: 28px; }
+      section { padding: clamp(60px, 10vw, 100px) 20px; }
+      .nav-links a { font-size: 11px; }
+      footer { padding: 24px 20px; }
     }
   </style>
 </head>
@@ -981,7 +915,7 @@
 
   <!-- Nav -->
   <nav class="nav" id="nav">
-    <a href="#top" class="nav-name">Alex<span>*</span>Daish</a>
+    <a href="#top" class="nav-name">Alex Daish</a>
     <ul class="nav-links">
       <li><a href="ventures.html">Ventures</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -992,70 +926,26 @@
 
   <!-- Hero -->
   <header class="hero" id="top">
-    <canvas id="heroDots"></canvas>
-    <div class="hero-inner">
-      <div class="hero-topline">
-        <span class="hero-label">Venture Design &mdash; London</span>
-        <span class="hero-label-dot" aria-hidden="true"></span>
-        <span class="hero-avail">Building new companies since 2017</span>
-      </div>
-      <h1 class="hero-name">
-        <span class="first">Alex</span>
-        <span class="last">Daish
-          <span class="sticker sticker-ventures">&#9733; 39 ventures &amp; counting</span>
-          <span class="sticker sticker-raised">&pound;64M+ raised</span>
-        </span>
-      </h1>
-      <p class="hero-tagline">I like to use my <span class="hl">imagination</span> to solve problems in exchange for money.</p>
-      <div class="hero-cta-row">
-        <a href="#ventures" class="btn btn-primary">See the proof &darr;</a>
-        <a href="#contact" class="btn btn-ghost">Start a conversation</a>
-      </div>
+    <div class="hero-label">Venture Design &mdash; London</div>
+    <h1 class="hero-name">
+      <span class="first">Alex</span>
+      <span class="last">Daish</span>
+    </h1>
+    <p class="hero-tagline">I like to use my imagination to solve problems in exchange for money.</p>
+    <div class="hero-meta">
+      <span>39 ventures</span><span class="dot">&middot;</span><span>&pound;64M+ raised</span><span class="dot">&middot;</span><span>19 corporate partners</span>
     </div>
-    <div class="hero-scroll" aria-hidden="true">Scroll &darr;</div>
+    <div class="hero-ctas">
+      <a href="#ventures" class="hero-cta primary">See the ventures</a>
+      <a href="#contact" class="hero-cta">Get in touch</a>
+    </div>
+    <canvas id="heroBlob"></canvas>
   </header>
 
-  <!-- Ticker -->
-  <div class="ticker-wrap">
-    <div class="ticker" aria-hidden="true">
-      <span>Imagination is a professional skill</span><span class="star">&#9733;</span>
-      <span>Zero to funded</span><span class="star">&#9733;</span>
-      <span>Blank page to company</span><span class="star">&#9733;</span>
-      <span>Kill bad ideas fast</span><span class="star">&#9733;</span>
-      <span>Venture design</span><span class="star">&#9733;</span>
-      <span>Imagination is a professional skill</span><span class="star">&#9733;</span>
-      <span>Zero to funded</span><span class="star">&#9733;</span>
-      <span>Blank page to company</span><span class="star">&#9733;</span>
-      <span>Kill bad ideas fast</span><span class="star">&#9733;</span>
-      <span>Venture design</span><span class="star">&#9733;</span>
-    </div>
-  </div>
-
-  <!-- Proof band -->
-  <div class="proof">
-    <div class="proof-grid">
-      <div class="proof-stat">
-        <div class="proof-num" data-count="39">0</div>
-        <div class="proof-label">Ventures greenlit<br>2018 &ndash; 2026</div>
-      </div>
-      <div class="proof-stat">
-        <div class="proof-num" data-count="400" data-prefix="~" data-suffix="+">0</div>
-        <div class="proof-label">Concepts explored<br>&amp; stress-tested</div>
-      </div>
-      <div class="proof-stat">
-        <div class="proof-num" data-count="64" data-prefix="&pound;" data-suffix="M+">£0</div>
-        <div class="proof-label">External capital<br>raised</div>
-      </div>
-      <div class="proof-stat">
-        <div class="proof-num" data-count="19" data-suffix="">0</div>
-        <div class="proof-label">Corporate partners<br>Nike to Aviva</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Logo marquee -->
-  <div class="logo-band">
-    <div class="logo-band-label">Ventures &amp; work built with</div>
+  <!-- Marquee -->
+  <!-- Logo Marquee -->
+  <div class="logo-marquee-wrap">
+    <div class="logo-marquee-label">Ventures &amp; work built with</div>
     <div class="logo-marquee" aria-hidden="true">
       <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
       <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars"></span>
@@ -1104,8 +994,26 @@
     <div class="section-inner">
       <div class="section-label reveal">The short version</div>
       <p class="intro-text reveal reveal-d1">
-        I build startups from scratch inside <em>Founders Factory</em>, one of Europe's leading venture studios. Over eight years I've generated dozens of venture concepts, validated them through <span class="hl-y">real-world experiments</span>, and helped launch companies that went on to raise external venture capital. Some are still growing. A few didn't work. <span class="hl-p">One involved cats.</span>
+        I build startups from scratch inside <em>Founders Factory</em>, one of Europe's leading venture studios. Over eight years I've generated dozens of venture concepts, validated them through real-world experiments, and helped launch companies that went on to raise external venture capital. Some are still growing. A few didn't work. One involved cats.
       </p>
+      <div class="intro-stats">
+        <div class="reveal reveal-d1">
+          <div class="stat-number" data-count="39">0</div>
+          <div class="stat-label">Ventures greenlit<br>2018 &ndash; 2026</div>
+        </div>
+        <div class="reveal reveal-d2">
+          <div class="stat-number" data-count="400" data-prefix="~" data-suffix="+">0</div>
+          <div class="stat-label">Concepts explored<br>(est.)</div>
+        </div>
+        <div class="reveal reveal-d3">
+          <div class="stat-number" data-count="64" data-prefix="&pound;" data-suffix="M+">£0</div>
+          <div class="stat-label">External capital<br>raised</div>
+        </div>
+        <div class="reveal reveal-d4">
+          <div class="stat-number" data-count="19">0</div>
+          <div class="stat-label">Corporate partners<br>Nike to Aviva</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1119,79 +1027,74 @@
       </p>
 
       <div class="venture-list">
-        <a href="https://tembomoney.com" target="_blank" rel="noopener" class="venture-item reveal">
-          <span class="venture-arrow">&nearr;</span>
+        <a href="https://www.trymalcolm.com/" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
           <div class="venture-num">01</div>
-          <div class="venture-main">
-            <h3 class="venture-name">Tembo</h3>
-            <p class="venture-desc">Family-powered mortgage and savings platform helping first-time buyers boost their budget and get on the ladder. Started as a venture concept with Aviva; now the biggest raise in my portfolio.</p>
-          </div>
-          <div class="venture-meta">
-            <span class="venture-outcome">Raised &pound;37.5M</span>
-            <span class="venture-tags">Fintech &middot; Mortgages</span>
-            <span class="venture-year">2020</span>
-          </div>
-        </a>
-
-        <a href="https://www.byway.travel" target="_blank" rel="noopener" class="venture-item reveal">
-          <span class="venture-arrow">&nearr;</span>
-          <div class="venture-num">02</div>
-          <div class="venture-main">
-            <h3 class="venture-name">Byway</h3>
-            <p class="venture-desc">The world's first flight-free holiday platform. A dynamic trip builder that lets travellers create personalised overland holidays across the UK and Europe &mdash; ABTA-protected, no flying required. Series A oversubscribed.</p>
-          </div>
-          <div class="venture-meta">
-            <span class="venture-outcome">Raised Series A &mdash; &pound;5M</span>
-            <span class="venture-tags">Travel Tech &middot; Sustainable Tourism</span>
-            <span class="venture-year">2020 &middot; <span class="press" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2024/07/09/byway-is-using-ai-to-help-travellers-slow-down-and-take-the-scenic-route/', '_blank');">TechCrunch &nearr;</span></span>
-          </div>
-        </a>
-
-        <a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="venture-item reveal">
-          <span class="venture-arrow">&nearr;</span>
-          <div class="venture-num">03</div>
-          <div class="venture-main">
-            <h3 class="venture-name">Temple</h3>
-            <p class="venture-desc">Token-gated membership platform for artists. NFT and social token-based memberships with exclusive perks. Pivoted toward fan microsites and data capture for independent musicians.</p>
-          </div>
-          <div class="venture-meta">
-            <span class="venture-outcome acquired">Acquired by Groover, 2025</span>
-            <span class="venture-tags">Creator Economy &middot; Music Tech</span>
-            <span class="venture-year">2020 &middot; <span class="press" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://musically.com/2025/09/18/groover-acquires-startup-temple-and-launches-new-d2f-tools/', '_blank');">Music Ally &nearr;</span></span>
-          </div>
-        </a>
-
-        <a href="https://www.usehammock.com" target="_blank" rel="noopener" class="venture-item reveal">
-          <span class="venture-arrow">&nearr;</span>
-          <div class="venture-num">04</div>
-          <div class="venture-main">
-            <h3 class="venture-name">Hammock</h3>
-            <p class="venture-desc">Open banking-connected platform for landlords. Automatically monitors rent collection, reconciles transactions, and produces draft property tax statements. Launched the first FCA-regulated current account for landlords.</p>
-          </div>
-          <div class="venture-meta">
-            <span class="venture-outcome">Raised Series A &mdash; $5.5M</span>
-            <span class="venture-tags">Fintech &middot; PropTech</span>
-            <span class="venture-year">2019 &middot; <span class="press" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2020/08/17/hammock/', '_blank');">TechCrunch &nearr;</span></span>
-          </div>
-        </a>
-
-        <a href="https://www.trymalcolm.com/" target="_blank" rel="noopener" class="venture-item reveal">
-          <span class="venture-arrow">&nearr;</span>
-          <div class="venture-num">05</div>
           <div class="venture-main">
             <h3 class="venture-name">Malcolm</h3>
             <p class="venture-desc">A protocol layer connecting AI agents to legacy insurance systems. Three pathways: A2A translation for mainframes, embedded generative UI checkout with FCA compliance, and headless APIs for agent-first quoting. Built with Aviva.</p>
           </div>
           <div class="venture-meta">
-            <span class="venture-outcome build">In build</span>
             <span class="venture-tags">Insurtech &middot; AI Infrastructure</span>
+            <span class="venture-outcome">In build</span>
             <span class="venture-year">2025</span>
+          </div>
+        </a>
+
+        <a href="https://tembomoney.com" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">02</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Tembo</h3>
+            <p class="venture-desc">Family-powered mortgage and savings platform helping first-time buyers boost their budget and get on the ladder. Started as a venture concept with Aviva; now the biggest raise in the portfolio.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Fintech &middot; Mortgages</span>
+            <span class="venture-outcome">Raised &pound;37.5M</span>
+            <span class="venture-year">2020</span>
+          </div>
+        </a>
+
+        <a href="https://www.byway.travel" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">03</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Byway</h3>
+            <p class="venture-desc">The world's first flight-free holiday platform. A dynamic trip builder that lets travellers create personalised overland holidays across the UK and Europe &mdash; ABTA-protected, no flying required. Series A oversubscribed.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Travel Tech &middot; Sustainable Tourism</span>
+            <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; &pound;5M</span></span>
+            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2024/07/09/byway-is-using-ai-to-help-travellers-slow-down-and-take-the-scenic-route/', '_blank');">TechCrunch &nearr;</span></span>
+          </div>
+        </a>
+
+        <a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">04</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Temple</h3>
+            <p class="venture-desc">Token-gated membership platform for artists. NFT and social token-based memberships with exclusive perks. Pivoted toward fan microsites and data capture for independent musicians.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Creator Economy &middot; Music Tech</span>
+            <span class="venture-outcome"><span class="venture-link-label">Acquired by Groover, 2025</span></span>
+            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://musically.com/2025/09/18/groover-acquires-startup-temple-and-launches-new-d2f-tools/', '_blank');">Music Ally &nearr;</span></span>
+          </div>
+        </a>
+
+        <a href="https://www.usehammock.com" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+          <div class="venture-num">05</div>
+          <div class="venture-main">
+            <h3 class="venture-name">Hammock</h3>
+            <p class="venture-desc">Open banking-connected platform for landlords. Automatically monitors rent collection, reconciles transactions, and produces draft property tax statements. Launched the first FCA-regulated current account for landlords.</p>
+          </div>
+          <div class="venture-meta">
+            <span class="venture-tags">Fintech &middot; PropTech</span>
+            <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; $5.5M</span></span>
+            <span class="venture-year">2019 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2020/08/17/hammock/', '_blank');">TechCrunch &nearr;</span></span>
           </div>
         </a>
       </div>
 
       <div class="ventures-cta reveal">
-        <a href="ventures.html" class="btn btn-primary">View all 39 ventures &rarr;</a>
+        <a href="ventures.html" class="view-all">View all 39 ventures &rarr;</a>
       </div>
     </div>
   </section>
@@ -1200,7 +1103,7 @@
   <section class="method">
     <div class="section-inner">
       <div class="section-label reveal">How I work</div>
-      <h2 class="section-heading reveal reveal-d1">Find the problem.<br>Prove it matters.<br><em>Build the thing.</em></h2>
+      <h2 class="section-heading reveal reveal-d1">Find the problem.<br>Prove it matters.<br>Build the thing.</h2>
       <p class="section-subtext reveal reveal-d2">
         Venture design is not ideation. It's a structured way of killing bad ideas quickly and giving good ones the evidence they need to survive.
       </p>
@@ -1224,6 +1127,23 @@
       </div>
     </div>
   </section>
+
+  <div class="marquee-wrap">
+    <div class="marquee" aria-hidden="true">
+      <span>Venture Design</span><span class="sep">/</span>
+      <span>Startup Building</span><span class="sep">/</span>
+      <span>Problem Finding</span><span class="sep">/</span>
+      <span>Imagination for Hire</span><span class="sep">/</span>
+      <span>Concept to Company</span><span class="sep">/</span>
+      <span>Zero to Funded</span><span class="sep">/</span>
+      <span>Venture Design</span><span class="sep">/</span>
+      <span>Startup Building</span><span class="sep">/</span>
+      <span>Problem Finding</span><span class="sep">/</span>
+      <span>Imagination for Hire</span><span class="sep">/</span>
+      <span>Concept to Company</span><span class="sep">/</span>
+      <span>Zero to Funded</span><span class="sep">/</span>
+    </div>
+  </div>
 
   <!-- Career -->
   <section class="career" id="career">
@@ -1289,15 +1209,15 @@
   <section class="contact" id="contact">
     <div class="section-inner">
       <div class="section-label reveal">Get in touch</div>
-      <h2 class="contact-heading reveal reveal-d1">Let's <em>talk.</em></h2>
+      <h2 class="section-heading reveal reveal-d1">Let's <em>talk.</em></h2>
       <p class="contact-sub reveal reveal-d2">
         Building something and need someone who's done this before?<br>Or just want to argue about whether memes count as a creative discipline?
       </p>
       <div class="contact-links reveal reveal-d3">
-        <a href="#" class="btn btn-primary" id="email-link"></a>
-        <a href="https://www.linkedin.com/in/daish/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://twitter.com/alexdaish" class="btn btn-ghost" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://www.instagram.com/alexdaish/" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" class="contact-link primary" id="email-link"></a>
+        <a href="https://www.linkedin.com/in/daish/" class="contact-link" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com/alexdaish" class="contact-link" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://www.instagram.com/alexdaish/" class="contact-link" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
   </section>
@@ -1335,9 +1255,9 @@
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
+        e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          e.preventDefault();
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
@@ -1376,18 +1296,18 @@
 
     // Interactive dot grid
     (function() {
-      var canvas = document.getElementById('heroDots');
+      var canvas = document.getElementById('heroBlob');
       if (!canvas) return;
       var ctx = canvas.getContext('2d');
       var dpr = window.devicePixelRatio || 1;
       var mouse = { x: -9999, y: -9999 };
       var hasMouse = false;
       var t = 0;
-      var spacing = 44;
-      var influenceRadius = 170;
-      var baseSize = 1.4;
-      var maxSize = 4.5;
-      var maxShift = 14;
+      var spacing = 40;
+      var influenceRadius = 160;
+      var baseSize = 1.2;
+      var maxSize = 3.5;
+      var maxShift = 12;
 
       function resize() {
         canvas.width = canvas.offsetWidth * dpr;
@@ -1445,11 +1365,11 @@
             var py = gy + shiftY;
             var size = baseSize + (maxSize - baseSize) * ease;
 
-            // color: faint ink by default, electric blue near cursor
-            var alpha = 0.14 + 0.66 * ease;
-            var red = Math.round(19 + (43 - 19) * ease);
-            var green = Math.round(19 + (36 - 19) * ease);
-            var blue = Math.round(17 + (245 - 17) * ease);
+            // color: muted by default, orange near cursor
+            var alpha = 0.12 + 0.6 * ease;
+            var red = Math.round(122 + (255 - 122) * ease);
+            var green = Math.round(126 + (107 - 126) * ease);
+            var blue = Math.round(150 + (43 - 150) * ease);
 
             ctx.beginPath();
             ctx.arc(px, py, size, 0, Math.PI * 2);
@@ -1462,6 +1382,18 @@
       }
       draw();
     })();
+
+    // Parallax fade on hero scroll
+    const heroContent = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const heroH = heroContent.offsetHeight;
+      if (scrolled < heroH) {
+        const progress = scrolled / heroH;
+        heroContent.style.opacity = 1 - progress * 1.2;
+        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
+      }
+    }, { passive: true });
 
     // Email obfuscation
     (function() {

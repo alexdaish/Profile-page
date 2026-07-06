@@ -7,38 +7,36 @@
   <meta name="description" content="39 ventures built from scratch at Founders Factory. Full portfolio with funding data, partners, and status.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --paper: #F5EFE2;
-      --paper-raised: #FFFDF6;
-      --ink: #131311;
-      --blue: #2B24F5;
-      --orange: #FF5A1F;
-      --yellow: #EFFF38;
-      --pink: #FFB4E1;
-      --green: #1F9D55;
-      --muted: #6E6A5E;
+      --bg-dark: #0A0A14;
+      --bg-warm: #F0F2F8;
+      --bg-card: #12121E;
+      --text-light: #F0F0F5;
+      --text-dark: #0A0A14;
+      --text-muted: #7A7E96;
+      --accent: #0000FF;
+      --orange: #FF6B2B;
+      --rule: rgba(240, 240, 245, 0.08);
       --serif: 'Instrument Serif', Georgia, serif;
       --sans: 'Outfit', -apple-system, sans-serif;
       --mono: 'Space Mono', 'Courier New', monospace;
-      --display: 'Archivo Black', 'Outfit', sans-serif;
-      --border: 2px solid var(--ink);
-      --max-w: 1280px;
+      --max-w: 1200px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    ::selection { background: var(--blue); color: var(--yellow); }
+    ::selection { background: var(--orange); color: white; }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
       font-family: var(--sans);
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.7;
-      color: var(--ink);
-      background: var(--paper);
+      color: var(--text-light);
+      background: var(--bg-dark);
     }
 
     /* Grain */
@@ -56,109 +54,76 @@
 
     a { color: inherit; }
 
-    /* Grain */
-    body::after { opacity: 0.04; }
-
     /* ============ HEADER ============ */
     .header {
-      padding: 16px 32px;
+      padding: 40px 40px 0;
+      max-width: var(--max-w);
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: var(--border);
-      background: var(--paper);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      gap: 24px;
     }
 
     .back-link {
-      font-family: var(--display);
-      font-size: 15px;
-      letter-spacing: 0.02em;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--ink);
+      color: var(--text-muted);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .back-link:hover { color: var(--blue); }
+    .back-link:hover { color: var(--orange); }
 
-    .header-links {
+    .header-nav {
       display: flex;
-      gap: 8px;
-      list-style: none;
+      gap: 28px;
     }
 
-    .header-links a {
+    .header-nav a {
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--ink);
-      text-decoration: none;
+      font-size: 12px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 6px 14px;
-      border: var(--border);
-      background: var(--paper-raised);
-      transition: all 0.2s;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.3s;
     }
 
-    .header-links a:hover {
-      background: var(--yellow);
-      box-shadow: 3px 3px 0 var(--ink);
-      transform: translate(-1px, -1px);
-    }
+    .header-nav a:hover { color: var(--orange); }
 
     .page-hero {
-      padding: clamp(60px, 8vw, 110px) 32px 48px;
+      padding: 80px 40px 60px;
       max-width: var(--max-w);
       margin: 0 auto;
     }
 
-    .page-hero .kicker {
-      display: inline-block;
-      font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--paper);
-      background: var(--ink);
-      padding: 6px 14px;
-      margin-bottom: 28px;
-      transform: rotate(-1.5deg);
-    }
-
     .page-hero h1 {
-      font-family: var(--display);
-      font-size: clamp(44px, 8vw, 96px);
-      line-height: 0.98;
-      text-transform: uppercase;
-      letter-spacing: -0.01em;
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 80px);
+      line-height: 0.95;
       margin-bottom: 24px;
     }
 
     .page-hero h1 em {
-      font-family: var(--serif);
       font-style: italic;
-      text-transform: none;
-      font-size: 1.1em;
-      color: var(--blue);
+      color: var(--orange);
     }
 
     .page-hero p {
       font-size: 18px;
-      color: var(--muted);
-      max-width: 620px;
+      color: var(--text-muted);
+      max-width: 600px;
       line-height: 1.6;
     }
 
     /* ============ SUMMARY STATS ============ */
     .summary {
       display: flex;
-      gap: 20px;
-      padding: 0 32px 56px;
+      gap: 48px;
+      padding: 0 40px 64px;
       max-width: var(--max-w);
       margin: 0 auto;
       flex-wrap: wrap;
@@ -167,95 +132,79 @@
     .summary-stat {
       display: flex;
       flex-direction: column;
-      background: var(--paper-raised);
-      border: var(--border);
-      box-shadow: 4px 4px 0 var(--ink);
-      padding: 20px 26px;
     }
 
-    .summary-stat:nth-child(odd) { transform: rotate(-0.8deg); }
-    .summary-stat:nth-child(even) { transform: rotate(0.8deg); }
-
     .summary-num {
-      font-family: var(--display);
-      font-size: 34px;
-      color: var(--blue);
+      font-family: var(--serif);
+      font-size: 36px;
+      color: var(--orange);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .summary-label {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text-muted);
     }
 
     /* ============ FILTERS ============ */
     .filters {
-      padding: 0 32px 48px;
+      padding: 0 40px 40px;
       max-width: var(--max-w);
       margin: 0 auto;
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .filter-btn {
       font-family: var(--mono);
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 11px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 10px 20px;
-      border: var(--border);
-      background: var(--paper-raised);
-      color: var(--ink);
+      padding: 8px 16px;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--text-muted);
       cursor: pointer;
       transition: all 0.2s;
       border-radius: 0;
     }
 
-    .filter-btn:hover {
-      background: var(--yellow);
-      transform: translate(-1px, -1px);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-
+    .filter-btn:hover,
     .filter-btn.active {
-      background: var(--ink);
-      color: var(--yellow);
-      box-shadow: 3px 3px 0 var(--orange);
+      border-color: var(--orange);
+      color: var(--orange);
     }
 
     /* ============ VENTURE GRID ============ */
     .venture-grid {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 32px 120px;
+      padding: 0 40px 120px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 20px;
+      gap: 1px;
+      background: var(--rule);
     }
 
     .v-card {
-      background: var(--paper-raised);
-      border: var(--border);
-      padding: 32px 28px;
+      background: var(--bg-dark);
+      padding: 36px 32px;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.3s;
       text-decoration: none;
       color: inherit;
       position: relative;
     }
 
     .v-card:hover {
-      transform: translate(-4px, -4px);
-      box-shadow: 8px 8px 0 var(--blue);
+      background: var(--bg-card);
     }
 
     .v-card-top {
@@ -268,44 +217,42 @@
     .v-card-num {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 700;
-      color: var(--muted);
+      color: var(--text-muted);
       flex-shrink: 0;
-      padding-top: 8px;
+      padding-top: 6px;
     }
 
     .v-card-name {
-      font-family: var(--display);
-      font-size: 22px;
-      line-height: 1.15;
-      text-transform: uppercase;
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.1;
       flex: 1;
       transition: color 0.3s;
     }
 
     .v-card:hover .v-card-name {
-      color: var(--blue);
+      color: var(--orange);
     }
 
     .v-card-arrow {
       font-size: 18px;
-      color: var(--muted);
+      color: var(--text-muted);
       opacity: 0;
       transform: translateX(-4px);
       transition: all 0.3s;
       flex-shrink: 0;
-      padding-top: 4px;
+      padding-top: 8px;
     }
 
     .v-card:hover .v-card-arrow {
       opacity: 1;
       transform: translateX(0);
-      color: var(--blue);
+      color: var(--orange);
     }
 
     .v-card-role {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.5;
     }
 
@@ -319,104 +266,88 @@
     .v-tag {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 4px 10px;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      background: var(--paper);
+      border: 1px solid var(--rule);
+      color: var(--text-muted);
     }
 
     .v-tag.partner {
-      background: var(--pink);
+      border-color: rgba(255, 107, 43, 0.2);
+      color: rgba(255, 107, 43, 0.7);
     }
 
     .v-tag.year {
-      background: transparent;
-      border-color: rgba(19, 19, 17, 0.3);
-      color: var(--muted);
+      border-color: var(--rule);
+      color: var(--text-muted);
     }
 
     .v-tag.status {
-      background: var(--yellow);
+      border-color: rgba(255, 107, 43, 0.3);
+      color: var(--orange);
     }
 
     .v-tag.status.dead {
-      background: transparent;
-      border-color: rgba(19, 19, 17, 0.25);
-      color: var(--muted);
+      border-color: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.25);
       text-decoration: line-through;
     }
 
     .v-tag.status.acquired {
-      background: var(--green);
-      color: var(--paper-raised);
-      border-color: var(--ink);
+      border-color: rgba(0, 200, 120, 0.3);
+      color: rgba(0, 200, 120, 0.8);
     }
 
     .v-card-funding {
       font-family: var(--mono);
       font-size: 13px;
-      color: var(--blue);
+      color: var(--orange);
       font-weight: 700;
     }
 
     .v-card-notes {
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text-muted);
       line-height: 1.5;
+      opacity: 0.7;
     }
-
-    /* dead cards fade back */
-    .v-card[data-status="dead"] .v-card-name { color: var(--muted); }
-    .v-card[data-status="dead"]:hover .v-card-name { color: var(--ink); }
 
     /* no-link cards */
     .v-card.no-link {
       cursor: default;
     }
 
-    .v-card.no-link:hover {
-      transform: none;
-      box-shadow: 4px 4px 0 rgba(19, 19, 17, 0.2);
-    }
-
     .v-card.no-link:hover .v-card-name {
-      color: var(--ink);
+      color: var(--text-light);
     }
 
     /* ============ FOOTER ============ */
     .page-footer {
       text-align: center;
-      padding: 28px 32px;
+      padding: 32px 40px;
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(245, 239, 226, 0.6);
-      background: var(--ink);
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--rule);
     }
 
     .page-footer a {
-      color: var(--yellow);
+      color: var(--orange);
       text-decoration: none;
     }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
-      .page-hero, .filters, .summary { padding-left: 22px; padding-right: 22px; }
-      .header { padding: 12px 16px; }
-      .header-links a { padding: 5px 10px; font-size: 10px; }
+      .page-hero, .header, .filters, .summary { padding-left: 24px; padding-right: 24px; }
       .venture-grid {
-        padding: 0 22px 80px;
+        padding: 0 24px 80px;
         grid-template-columns: 1fr;
       }
-      .v-card { padding: 26px 22px; }
-      .summary { gap: 14px; }
-      .summary-stat { padding: 14px 18px; }
-      .summary-num { font-size: 26px; }
-      .page-footer { padding: 22px; }
+      .v-card { padding: 28px 24px; }
+      .summary { gap: 32px; }
+      .page-footer { padding: 24px; }
     }
 
     /* ============ ANIMATIONS ============ */
@@ -446,14 +377,13 @@
 
   <div class="header">
     <a href="index.html" class="back-link">&larr; Alex Daish</a>
-    <ul class="header-links">
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
+    <nav class="header-nav">
+      <a href="projects.html">Projects</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
   </div>
 
   <div class="page-hero">
-    <span class="kicker reveal">The full ledger</span>
     <h1 class="reveal">Venture <em>Portfolio</em></h1>
     <p class="reveal">39 ventures built from scratch at Founders Factory across 8 years, 19 corporate partners, and more bad ideas killed than I can count.</p>
   </div>
