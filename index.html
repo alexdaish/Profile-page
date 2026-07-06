@@ -322,7 +322,7 @@
       display: flex;
       width: max-content;
       animation: marquee-scroll 50s linear infinite;
-      gap: 48px;
+      gap: 28px;
     }
 
     .logo-item {
@@ -335,11 +335,16 @@
       color: var(--text-muted-dark);
       white-space: nowrap;
       opacity: 0.45;
-      transition: opacity 0.3s;
+      padding: 9px 18px;
+      border-radius: 8px;
+      transition: opacity 0.3s, background 0.3s;
     }
 
+    /* On hover, sit the full-colour logo on a light chip so dark marks
+       (Nike, Volvo, Rolls-Royce, PICO…) stay legible on the dark page. */
     .logo-item:hover {
       opacity: 1;
+      background: var(--bg-warm);
     }
 
     .logo-item img {
@@ -351,19 +356,17 @@
       transition: filter 0.3s;
     }
 
+    /* Reveal each logo's full brand colour on hover. */
     .logo-item:hover img {
-      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(350deg);
+      filter: none;
     }
 
     /* Knockout-fill logos (a solid block with white lettering) collapse
-       into a grey blob under brightness(0), so desaturate them instead —
-       the wordmark stays readable — and reveal full brand colour on hover. */
+       into a grey blob under brightness(0), so desaturate them at rest
+       instead — the wordmark stays readable. Hover still resolves to
+       full colour via the rule above. */
     .logo-item.brand img {
       filter: grayscale(1);
-    }
-
-    .logo-item.brand:hover img {
-      filter: none;
     }
 
     /* ============ SECTIONS ============ */
