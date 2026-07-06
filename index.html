@@ -961,10 +961,8 @@
       <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
       <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
       <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
-      <span class="logo-item"><img src="logos/lego.svg" alt="LEGO"></span>
       <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
       <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
-      <span class="logo-item"><img src="logos/csc.svg" alt="CSC"></span>
       <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
       <!-- duplicate for seamless loop -->
       <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
@@ -981,10 +979,8 @@
       <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
       <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
       <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
-      <span class="logo-item"><img src="logos/lego.svg" alt="LEGO"></span>
       <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
       <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
-      <span class="logo-item"><img src="logos/csc.svg" alt="CSC"></span>
       <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
     </div>
   </div>
@@ -1383,7 +1379,8 @@
       draw();
     })();
 
-    // Parallax fade on hero scroll
+    // Fade hero on scroll (no vertical shift, so the CTAs never slip
+    // behind the logo bar below)
     const heroContent = document.querySelector('.hero');
     window.addEventListener('scroll', () => {
       const scrolled = window.scrollY;
@@ -1391,7 +1388,6 @@
       if (scrolled < heroH) {
         const progress = scrolled / heroH;
         heroContent.style.opacity = 1 - progress * 1.2;
-        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
       }
     }, { passive: true });
 
