@@ -7,36 +7,37 @@
   <meta name="description" content="Creative projects, product concepts, and side ventures from before (and during) startup life.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0A0A14;
-      --bg-warm: #F0F2F8;
-      --bg-card: #12121E;
-      --text-light: #F0F0F5;
-      --text-dark: #0A0A14;
-      --text-muted: #7A7E96;
-      --accent: #0000FF;
-      --orange: #FF6B2B;
-      --rule: rgba(240, 240, 245, 0.08);
+      --paper: #F5EFE2;
+      --paper-raised: #FFFDF6;
+      --ink: #131311;
+      --blue: #2B24F5;
+      --orange: #FF5A1F;
+      --yellow: #EFFF38;
+      --pink: #FFB4E1;
+      --muted: #6E6A5E;
       --serif: 'Instrument Serif', Georgia, serif;
       --sans: 'Outfit', -apple-system, sans-serif;
       --mono: 'Space Mono', 'Courier New', monospace;
-      --max-w: 1200px;
+      --display: 'Archivo Black', 'Outfit', sans-serif;
+      --border: 2px solid var(--ink);
+      --max-w: 1280px;
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    ::selection { background: var(--orange); color: white; }
+    ::selection { background: var(--blue); color: var(--yellow); }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
       font-family: var(--sans);
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.7;
-      color: var(--text-light);
-      background: var(--bg-dark);
+      color: var(--ink);
+      background: var(--paper);
     }
 
     /* Grain */
@@ -54,48 +55,102 @@
 
     a { color: inherit; }
 
+    /* Grain */
+    body::after { opacity: 0.04; }
+
     /* ============ HEADER ============ */
     .header {
-      padding: 40px 40px 0;
-      max-width: var(--max-w);
-      margin: 0 auto;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: var(--border);
+      background: var(--paper);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .back-link {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-family: var(--display);
+      font-size: 15px;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--ink);
       text-decoration: none;
       transition: color 0.3s;
     }
 
-    .back-link:hover { color: var(--orange); }
+    .back-link:hover { color: var(--blue); }
+
+    .header-links {
+      display: flex;
+      gap: 8px;
+      list-style: none;
+    }
+
+    .header-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: var(--border);
+      background: var(--paper-raised);
+      transition: all 0.2s;
+    }
+
+    .header-links a:hover {
+      background: var(--yellow);
+      box-shadow: 3px 3px 0 var(--ink);
+      transform: translate(-1px, -1px);
+    }
 
     /* ============ HERO ============ */
     .page-hero {
-      padding: 80px 40px 60px;
+      padding: clamp(60px, 8vw, 110px) 32px 72px;
       max-width: var(--max-w);
       margin: 0 auto;
     }
 
+    .page-hero .kicker {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--paper);
+      background: var(--ink);
+      padding: 6px 14px;
+      margin-bottom: 28px;
+      transform: rotate(-1.5deg);
+    }
+
     .page-hero h1 {
-      font-family: var(--serif);
-      font-size: clamp(48px, 8vw, 80px);
-      line-height: 0.95;
+      font-family: var(--display);
+      font-size: clamp(44px, 8vw, 96px);
+      line-height: 0.98;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
       margin-bottom: 24px;
     }
 
     .page-hero h1 em {
+      font-family: var(--serif);
       font-style: italic;
+      text-transform: none;
+      font-size: 1.1em;
       color: var(--orange);
     }
 
     .page-hero p {
       font-size: 18px;
-      color: var(--text-muted);
-      max-width: 600px;
+      color: var(--muted);
+      max-width: 620px;
       line-height: 1.6;
     }
 
@@ -103,28 +158,42 @@
     .projects {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 40px 120px;
+      padding: 0 32px 120px;
     }
 
     .project {
-      border-top: 1px solid var(--rule);
-      padding: 80px 0;
+      border: var(--border);
+      background: var(--paper-raised);
+      padding: clamp(36px, 5vw, 64px);
+      margin-bottom: 40px;
+      box-shadow: 6px 6px 0 var(--ink);
+    }
+
+    .project:nth-child(even) {
+      box-shadow: 6px 6px 0 var(--blue);
     }
 
     .project-num {
+      display: inline-block;
       font-family: var(--mono);
       font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.1em;
-      color: var(--orange);
-      margin-bottom: 16px;
-      display: block;
+      color: var(--ink);
+      background: var(--yellow);
+      border: var(--border);
+      padding: 4px 12px;
+      margin-bottom: 20px;
+      transform: rotate(-1.5deg);
     }
 
     .project-title {
-      font-family: var(--serif);
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.05;
-      margin-bottom: 12px;
+      font-family: var(--display);
+      font-size: clamp(28px, 4.5vw, 52px);
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
     }
 
     .project-title a {
@@ -133,14 +202,16 @@
     }
 
     .project-title a:hover {
-      color: var(--orange);
+      color: var(--blue);
     }
 
     .project-context {
       font-family: var(--mono);
       font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.06em;
-      color: var(--text-muted);
+      text-transform: uppercase;
+      color: var(--muted);
       margin-bottom: 40px;
     }
 
@@ -154,9 +225,15 @@
     .project-image {
       width: 100%;
       aspect-ratio: 3 / 2;
-      background: var(--bg-card);
-      border-radius: 4px;
+      background: var(--paper);
+      border: var(--border);
       overflow: hidden;
+      transform: rotate(-1deg);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project:hover .project-image {
+      transform: rotate(0deg);
     }
 
     .project-image img {
@@ -168,7 +245,7 @@
 
     .project-body p {
       font-size: 16px;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.75;
       margin-bottom: 16px;
     }
@@ -176,39 +253,49 @@
     .project-stats {
       margin-top: 24px;
       padding: 20px 24px;
-      background: var(--bg-card);
-      border-radius: 4px;
+      background: var(--yellow);
+      border: var(--border);
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 20px 28px;
     }
 
     .project-stat {
       font-family: var(--mono);
       font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.04em;
-      color: var(--text-light);
+      text-transform: uppercase;
+      color: var(--ink);
     }
 
     .project-stat strong {
-      color: var(--orange);
-      font-weight: 700;
+      display: block;
+      font-family: var(--display);
+      font-size: 20px;
+      color: var(--blue);
+      font-weight: 400;
     }
 
     .project-link {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 24px;
       font-family: var(--mono);
       font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--paper);
+      background: var(--ink);
+      padding: 10px 20px;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: all 0.2s;
     }
 
     .project-link:hover {
-      color: var(--accent);
+      background: var(--blue);
+      box-shadow: 4px 4px 0 var(--orange);
+      transform: translate(-2px, -2px);
     }
 
     .project-link::after {
@@ -219,73 +306,87 @@
     .mentions {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 40px 120px;
+      padding: 0 32px 120px;
     }
 
     .mentions-heading {
-      font-family: var(--serif);
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.1;
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.05;
+      text-transform: uppercase;
       margin-bottom: 48px;
     }
 
     .mentions-heading em {
+      font-family: var(--serif);
       font-style: italic;
+      text-transform: none;
+      font-size: 1.1em;
       color: var(--orange);
     }
 
     .mentions-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
+      gap: 0 56px;
     }
 
     .mention {
       padding: 24px 0;
-      border-top: 1px solid var(--rule);
+      border-top: 2px solid rgba(19, 19, 17, 0.2);
+      transition: padding-left 0.25s;
+    }
+
+    .mention:hover {
+      padding-left: 10px;
+      border-top-color: var(--ink);
     }
 
     .mention-title {
       font-family: var(--sans);
       font-size: 16px;
-      font-weight: 400;
-      color: var(--text-light);
+      font-weight: 600;
+      color: var(--ink);
       margin-bottom: 4px;
     }
 
     .mention-desc {
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--muted);
       line-height: 1.5;
     }
 
     .mention-year {
       font-family: var(--mono);
       font-size: 11px;
+      font-weight: 700;
       letter-spacing: 0.06em;
-      color: var(--text-muted);
-      opacity: 0.7;
+      color: var(--muted);
+      opacity: 0.8;
     }
 
     /* ============ FOOTER ============ */
     .page-footer {
       text-align: center;
-      padding: 32px 40px;
+      padding: 28px 32px;
       font-family: var(--mono);
       font-size: 11px;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      border-top: 1px solid var(--rule);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 226, 0.6);
+      background: var(--ink);
     }
 
     .page-footer a {
-      color: var(--orange);
+      color: var(--yellow);
       text-decoration: none;
     }
 
     /* ============ RESPONSIVE ============ */
     @media (max-width: 768px) {
-      .page-hero, .header, .projects, .mentions { padding-left: 24px; padding-right: 24px; }
+      .page-hero, .projects, .mentions { padding-left: 22px; padding-right: 22px; }
+      .header { padding: 12px 16px; }
+      .header-links a { padding: 5px 10px; font-size: 10px; }
 
       .project-grid {
         grid-template-columns: 1fr;
@@ -300,8 +401,8 @@
         grid-template-columns: 1fr;
       }
 
-      .project { padding: 48px 0; }
-      .page-footer { padding: 24px; }
+      .project { padding: 28px 22px; margin-bottom: 28px; }
+      .page-footer { padding: 22px; }
     }
 
     /* ============ ANIMATIONS ============ */
@@ -316,15 +417,29 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
   </style>
 </head>
 <body>
 
   <div class="header">
     <a href="index.html" class="back-link">&larr; Alex Daish</a>
+    <ul class="header-links">
+      <li><a href="ventures.html">Ventures</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
   </div>
 
   <div class="page-hero">
+    <span class="kicker reveal">Off the clock</span>
     <h1 class="reveal">Other <em>Projects</em></h1>
     <p class="reveal">Before I built startups for a living, I built things for fun, for brands, and for no good reason at all. These are the ones worth showing.</p>
   </div>
