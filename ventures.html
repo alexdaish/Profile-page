@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Venture Portfolio — Alex Daish</title>
   <meta name="description" content="39 ventures built from scratch at Founders Factory. Full portfolio with funding data, partners, and status.">
+  <meta property="og:title" content="Venture Portfolio — Alex Daish">
+  <meta property="og:description" content="39 ventures built from scratch at Founders Factory across 8 years and 19 corporate partners.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://daish.io/ventures.html">
+  <meta property="og:image" content="https://daish.io/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://daish.io/images/og-card.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -15,7 +25,7 @@
       --bg-card: #12121E;
       --text-light: #F0F0F5;
       --text-dark: #0A0A14;
-      --text-muted: #7A7E96;
+      --text-muted: #8A8FA6;
       --accent: #0000FF;
       --orange: #FF6B2B;
       --rule: rgba(240, 240, 245, 0.08);
@@ -29,6 +39,13 @@
     ::selection { background: var(--orange); color: white; }
 
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
 
     body {
       font-family: var(--sans);
@@ -144,7 +161,7 @@
 
     .summary-label {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -162,7 +179,7 @@
 
     .filter-btn {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 8px 16px;
@@ -266,7 +283,7 @@
 
     .v-tag {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 4px 10px;
@@ -290,8 +307,8 @@
     }
 
     .v-tag.status.dead {
-      border-color: rgba(255, 255, 255, 0.06);
-      color: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.45);
       text-decoration: line-through;
     }
 
@@ -328,7 +345,7 @@
       text-align: center;
       padding: 32px 40px;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       color: var(--text-muted);
       border-top: 1px solid var(--rule);
@@ -340,6 +357,15 @@
     }
 
     /* ============ RESPONSIVE ============ */
+    /* Touch devices get the card arrows at rest — there is no hover to
+       reveal them. */
+    @media (hover: none) {
+      .v-card-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
     @media (max-width: 768px) {
       .page-hero, .header, .filters, .summary { padding-left: 24px; padding-right: 24px; }
       .venture-grid {

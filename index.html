@@ -8,6 +8,39 @@
   <meta property="og:title" content="Alex Daish — Venture Design Lead">
   <meta property="og:description" content="I like to use my imagination to solve problems in exchange for money.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://daish.io/">
+  <meta property="og:image" content="https://daish.io/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alex Daish — Venture Design Lead">
+  <meta name="twitter:description" content="39 ventures built from scratch. £64M+ raised. Imagination is a professional skill.">
+  <meta name="twitter:image" content="https://daish.io/images/og-card.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alex Daish",
+    "url": "https://daish.io/",
+    "jobTitle": "Venture Design Lead",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Founders Factory",
+      "url": "https://foundersfactory.com/"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "London",
+      "addressCountry": "GB"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/daish/",
+      "https://twitter.com/alexdaish",
+      "https://www.instagram.com/alexdaish/"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -18,8 +51,8 @@
       --bg-card: #10101E;
       --text-light: #F0F0F5;
       --text-dark: #0A0A14;
-      --text-muted-dark: #7A7E96;
-      --text-muted-light: #6B6F82;
+      --text-muted-dark: #8A8FA6;
+      --text-muted-light: #5D6174;
       --accent: #0000FF;
       --accent-dim: rgba(0, 0, 255, 0.12);
       --orange: #FF6B2B;
@@ -43,6 +76,13 @@
       scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
 
     body {
@@ -310,7 +350,7 @@
 
     .logo-marquee-label {
       font-family: var(--mono);
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-muted-dark);
@@ -446,7 +486,7 @@
 
     .stat-label {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       color: var(--text-muted-dark);
       line-height: 1.5;
@@ -468,6 +508,7 @@
     }
 
     .venture-item {
+      position: relative;
       display: grid;
       grid-template-columns: 64px 1fr 280px;
       gap: 0 40px;
@@ -479,6 +520,32 @@
       padding-left: 20px;
       padding-right: 20px;
       border-radius: 8px;
+    }
+
+    /* The venture name is the card's real link; its ::before stretches
+       over the whole card so the full row stays clickable without
+       nesting interactive elements. */
+    .venture-link {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .venture-link::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+    }
+
+    .press-link {
+      position: relative;
+      z-index: 1;
+      color: inherit;
+      text-decoration: underline;
+    }
+
+    .press-link:hover {
+      color: var(--accent);
     }
 
     .venture-item:hover {
@@ -526,7 +593,7 @@
 
     .venture-tags {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-muted-light);
@@ -811,7 +878,7 @@
       text-align: center;
       padding: 32px 40px;
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: 0.06em;
       color: var(--text-muted-light);
       border-top: 1px solid var(--rule-light);
@@ -961,45 +1028,45 @@
   <div class="logo-marquee-wrap">
     <div class="logo-marquee-label">Ventures &amp; work built with</div>
     <div class="logo-marquee" aria-hidden="true">
-      <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
-      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars"></span>
-      <span class="logo-item"><img src="logos/google.svg" alt="Google"></span>
-      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce"></span>
-      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva"></span>
-      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group"></span>
-      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal"></span>
-      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt"></span>
-      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta"></span>
-      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet"></span>
-      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck"></span>
-      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
-      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
-      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
-      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO"></span>
-      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
-      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
-      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC"></span>
-      <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
+      <span class="logo-item"><img src="logos/nike.svg" alt="Nike" width="79" height="28"></span>
+      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars" width="361" height="28"></span>
+      <span class="logo-item"><img src="logos/google.svg" alt="Google" width="83" height="28"></span>
+      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce" width="22" height="28"></span>
+      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva" width="39" height="28"></span>
+      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group" width="85" height="28"></span>
+      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal" width="155" height="28"></span>
+      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt" width="80" height="28"></span>
+      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta" width="28" height="28"></span>
+      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet" width="125" height="28"></span>
+      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck" width="128" height="28"></span>
+      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb" width="140" height="28"></span>
+      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev" width="152" height="28"></span>
+      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom" width="24" height="28"></span>
+      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO" width="28" height="28"></span>
+      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia" width="178" height="28"></span>
+      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science" width="28" height="28"></span>
+      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC" width="46" height="28"></span>
+      <span class="logo-item"><img src="logos/pico.svg" alt="Pico" width="96" height="28"></span>
       <!-- duplicate for seamless loop -->
-      <span class="logo-item"><img src="logos/nike.svg" alt="Nike"></span>
-      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars"></span>
-      <span class="logo-item"><img src="logos/google.svg" alt="Google"></span>
-      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce"></span>
-      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva"></span>
-      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group"></span>
-      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal"></span>
-      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt"></span>
-      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta"></span>
-      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet"></span>
-      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck"></span>
-      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb"></span>
-      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev"></span>
-      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom"></span>
-      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO"></span>
-      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia"></span>
-      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science"></span>
-      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC"></span>
-      <span class="logo-item"><img src="logos/pico.svg" alt="Pico"></span>
+      <span class="logo-item"><img src="logos/nike.svg" alt="Nike" width="79" height="28"></span>
+      <span class="logo-item"><img src="logos/volvo.svg" alt="Volvo Cars" width="361" height="28"></span>
+      <span class="logo-item"><img src="logos/google.svg" alt="Google" width="83" height="28"></span>
+      <span class="logo-item"><img src="logos/rolls-royce.svg" alt="Rolls-Royce" width="22" height="28"></span>
+      <span class="logo-item"><img src="logos/aviva.svg" alt="Aviva" width="39" height="28"></span>
+      <span class="logo-item"><img src="logos/guardian.svg" alt="Guardian Media Group" width="85" height="28"></span>
+      <span class="logo-item"><img src="logos/loreal.svg" alt="L'Oréal" width="155" height="28"></span>
+      <span class="logo-item"><img src="logos/reckitt.svg" alt="Reckitt" width="80" height="28"></span>
+      <span class="logo-item"><img src="logos/nesta.svg" alt="Nesta" width="28" height="28"></span>
+      <span class="logo-item"><img src="logos/easyjet.svg" alt="easyJet" width="125" height="28"></span>
+      <span class="logo-item"><img src="logos/holtzbrinck.svg" alt="Holtzbrinck" width="128" height="28"></span>
+      <span class="logo-item"><img src="logos/fastweb.svg" alt="Fastweb" width="140" height="28"></span>
+      <span class="logo-item"><img src="logos/abinbev.svg" alt="AB InBev" width="152" height="28"></span>
+      <span class="logo-item"><img src="logos/deutsche-telekom.svg" alt="Deutsche Telekom" width="24" height="28"></span>
+      <span class="logo-item brand"><img src="logos/lego.svg" alt="LEGO" width="28" height="28"></span>
+      <span class="logo-item"><img src="logos/vonovia.svg" alt="Vonovia" width="178" height="28"></span>
+      <span class="logo-item"><img src="logos/woven-science.png" alt="Woven Science" width="28" height="28"></span>
+      <span class="logo-item brand"><img src="logos/csc.svg" alt="CSC" width="46" height="28"></span>
+      <span class="logo-item"><img src="logos/pico.svg" alt="Pico" width="96" height="28"></span>
     </div>
   </div>
 
@@ -1041,10 +1108,10 @@
       </p>
 
       <div class="venture-list">
-        <a href="https://www.trymalcolm.com/" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+        <article class="venture-item reveal">
           <div class="venture-num">01</div>
           <div class="venture-main">
-            <h3 class="venture-name">Malcolm</h3>
+            <h3 class="venture-name"><a href="https://www.trymalcolm.com/" target="_blank" rel="noopener" class="venture-link">Malcolm</a></h3>
             <p class="venture-desc">A protocol layer connecting AI agents to legacy insurance systems. Three pathways: A2A translation for mainframes, embedded generative UI checkout with FCA compliance, and headless APIs for agent-first quoting. Built with Aviva.</p>
           </div>
           <div class="venture-meta">
@@ -1052,12 +1119,12 @@
             <span class="venture-outcome">In build</span>
             <span class="venture-year">2025</span>
           </div>
-        </a>
+        </article>
 
-        <a href="https://tembomoney.com" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+        <article class="venture-item reveal">
           <div class="venture-num">02</div>
           <div class="venture-main">
-            <h3 class="venture-name">Tembo</h3>
+            <h3 class="venture-name"><a href="https://tembomoney.com" target="_blank" rel="noopener" class="venture-link">Tembo</a></h3>
             <p class="venture-desc">Family-powered mortgage and savings platform helping first-time buyers boost their budget and get on the ladder. Started as a venture concept with Aviva; now the biggest raise in the portfolio.</p>
           </div>
           <div class="venture-meta">
@@ -1065,46 +1132,46 @@
             <span class="venture-outcome">Raised &pound;37.5M</span>
             <span class="venture-year">2020</span>
           </div>
-        </a>
+        </article>
 
-        <a href="https://www.byway.travel" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+        <article class="venture-item reveal">
           <div class="venture-num">03</div>
           <div class="venture-main">
-            <h3 class="venture-name">Byway</h3>
+            <h3 class="venture-name"><a href="https://www.byway.travel" target="_blank" rel="noopener" class="venture-link">Byway</a></h3>
             <p class="venture-desc">The world's first flight-free holiday platform. A dynamic trip builder that lets travellers create personalised overland holidays across the UK and Europe &mdash; ABTA-protected, no flying required. Series A oversubscribed.</p>
           </div>
           <div class="venture-meta">
             <span class="venture-tags">Travel Tech &middot; Sustainable Tourism</span>
             <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; &pound;5M</span></span>
-            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2024/07/09/byway-is-using-ai-to-help-travellers-slow-down-and-take-the-scenic-route/', '_blank');">TechCrunch &nearr;</span></span>
+            <span class="venture-year">2020 &middot; <a href="https://techcrunch.com/2024/07/09/byway-is-using-ai-to-help-travellers-slow-down-and-take-the-scenic-route/" target="_blank" rel="noopener" class="press-link">TechCrunch &nearr;</a></span>
           </div>
-        </a>
+        </article>
 
-        <a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+        <article class="venture-item reveal">
           <div class="venture-num">04</div>
           <div class="venture-main">
-            <h3 class="venture-name">Temple</h3>
+            <h3 class="venture-name"><a href="https://groover.co/en/lp/temple/" target="_blank" rel="noopener" class="venture-link">Temple</a></h3>
             <p class="venture-desc">Token-gated membership platform for artists. NFT and social token-based memberships with exclusive perks. Pivoted toward fan microsites and data capture for independent musicians.</p>
           </div>
           <div class="venture-meta">
             <span class="venture-tags">Creator Economy &middot; Music Tech</span>
             <span class="venture-outcome"><span class="venture-link-label">Acquired by Groover, 2025</span></span>
-            <span class="venture-year">2020 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://musically.com/2025/09/18/groover-acquires-startup-temple-and-launches-new-d2f-tools/', '_blank');">Music Ally &nearr;</span></span>
+            <span class="venture-year">2020 &middot; <a href="https://musically.com/2025/09/18/groover-acquires-startup-temple-and-launches-new-d2f-tools/" target="_blank" rel="noopener" class="press-link">Music Ally &nearr;</a></span>
           </div>
-        </a>
+        </article>
 
-        <a href="https://www.usehammock.com" target="_blank" rel="noopener" class="venture-item reveal" style="text-decoration:none;color:inherit;">
+        <article class="venture-item reveal">
           <div class="venture-num">05</div>
           <div class="venture-main">
-            <h3 class="venture-name">Hammock</h3>
+            <h3 class="venture-name"><a href="https://www.usehammock.com" target="_blank" rel="noopener" class="venture-link">Hammock</a></h3>
             <p class="venture-desc">Open banking-connected platform for landlords. Automatically monitors rent collection, reconciles transactions, and produces draft property tax statements. Launched the first FCA-regulated current account for landlords.</p>
           </div>
           <div class="venture-meta">
             <span class="venture-tags">Fintech &middot; PropTech</span>
             <span class="venture-outcome"><span class="venture-link-label">Raised Series A &mdash; $5.5M</span></span>
-            <span class="venture-year">2019 &middot; <span style="text-decoration:underline; cursor:pointer;" onclick="event.preventDefault(); event.stopPropagation(); window.open('https://techcrunch.com/2020/08/17/hammock/', '_blank');">TechCrunch &nearr;</span></span>
+            <span class="venture-year">2019 &middot; <a href="https://techcrunch.com/2020/08/17/hammock/" target="_blank" rel="noopener" class="press-link">TechCrunch &nearr;</a></span>
           </div>
-        </a>
+        </article>
       </div>
 
       <div class="ventures-cta reveal">
